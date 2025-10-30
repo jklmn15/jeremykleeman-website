@@ -45,17 +45,18 @@
           action="https://formspree.io/f/movplpan"
           method="POST"
         >
-          <label>
-            Your email:
-            <input type="email" name="email">
-          </label>
-          <label>
-            Your message:
-            <textarea name="message"></textarea>
-          </label>
-          <!-- your other form fields go here -->
-          <button type="submit">Send</button>
-        </form>
+        <div class="mb-3">
+          <input type="text" class="form-control" id="namesubmission1" placeholder="Name">
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" id="emailsubmission1" placeholder="Email Address">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" id="messagesubmission1" rows="6" placeholder="Your Message"></textarea>
+        </div>
+        <button id="sent" style="float: right;">Send</button>
+        <br>
+      </div>
       </div>
 
     </body>
