@@ -10,16 +10,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <title>Jeremy Kleeman | Contact</title>
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('#sent').addEventListener('click', function() {
-            document.querySelector('#printout1').innerHTML = "<p>For security reasons I need more than just basic Javascript to send this email!  But to prove I am listening, here is what you said:</p>";
-            document.querySelector('#printout2').innerHTML = "<b>Name:</b>  " + document.querySelector('#namesubmission1').value + "<br><b>Email:</b>  " + document.querySelector('#emailsubmission1').value + "<br><b>Message:</b> " + document.querySelector('#messagesubmission1').value;
-
-            })
-          });
-
-        </script>
     </head>
     <body>
     <nav class="navbar navbar-expand-md navbar-dark ">
@@ -51,21 +41,21 @@
       <br>
       <div class="container sitetext">
         Please leave me a message here!
-        <br>
-        <br>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="namesubmission1" placeholder="Name">
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" id="emailsubmission1" placeholder="Email Address">
-        </div>
-        <div class="mb-3">
-          <textarea class="form-control" id="messagesubmission1" rows="6" placeholder="Your Message"></textarea>
-        </div>
-        <button id="sent" style="float: right;">Send</button>
-        <br>
-        <div id="printout1"></div>
-        <div id="printout2"></div>
+            <form
+          action="https://formspree.io/f/movplpan"
+          method="POST"
+        >
+          <label>
+            Your email:
+            <input type="email" name="email">
+          </label>
+          <label>
+            Your message:
+            <textarea name="message"></textarea>
+          </label>
+          <!-- your other form fields go here -->
+          <button type="submit">Send</button>
+        </form>
       </div>
 
     </body>
