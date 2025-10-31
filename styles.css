@@ -388,3 +388,74 @@ body {
   margin: 2rem 0;
   opacity: 0.25;
 }
+
+/* ============================================================= */
+/* ====================== NAVBAR — BRAND POP ================== */
+/* ============================================================= */
+
+/* Brand container */
+.navbar-brand {
+  padding: 0.5rem 0;
+  margin-right: 0;
+  line-height: 1;
+}
+
+/* Name split for styling */
+.brand-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  letter-spacing: 0.5px;
+}
+.brand-surname {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  color: #4a90e2;
+  text-shadow: 0 0 12px rgba(74, 144, 226, 0.6);
+  letter-spacing: 1px;
+}
+
+/* MOBILE: HUGE & CENTERED */
+@media (max-width: 767px) {
+  .navbar-brand {
+    font-size: 7.5vw !important;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
+  }
+  .brand-name {
+    font-size: 7.5vw;
+    display: block;
+  }
+  .brand-surname {
+    font-size: 7.5vw;
+    display: block;
+    margin-top: -0.8vw;
+  }
+  .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+}
+
+/* TABLET & DESKTOP: BIGGER, GLOWING */
+@media (min-width: 768px) {
+  .brand-name {
+    font-size: 2.8rem;
+  }
+  .brand-surname {
+    font-size: 2.8rem;
+    margin-left: 0.2rem;
+  }
+  .navbar-brand:hover .brand-name,
+  .navbar-brand:hover .brand-surname {
+    text-shadow: 0 0 16px rgba(74, 144, 226, 0.7);
+    transition: text-shadow 0.3s ease;
+  }
+}
