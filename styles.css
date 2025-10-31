@@ -74,120 +74,137 @@
 }
 
 /* ============================================================= */
-/* ====================== PERFORMANCES PAGE ===================== */
+/* ================ PERFORMANCES PAGE – FINAL DESIGN =========== */
 /* ============================================================= */
 
-/* ---- Card container ---- */
+/* ---- Card: centered, elevated, modern ---- */
 .perf-card {
-  background-color: #12142f;
-  border-radius: 12px;
+  background: linear-gradient(145deg, #12142f, #0e1027);
+  border-radius: 16px;
   overflow: hidden;
-  transition: transform .25s ease, box-shadow .25s ease;
-  display: flex;
-  flex-direction: column;
+  transition: all .3s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,.3);
   height: 100%;
 }
 .perf-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(255,255,255,.08);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(74, 144, 226, .15);
+  background: linear-gradient(145deg, #141630, #101228);
 }
 
-/* ---- Card body (no image, extra top padding) ---- */
+/* ---- Card body: centered content ---- */
 .perf-card .card-body {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 1.75rem 1.25rem 1.25rem; /* more top space */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  flex: 1;
 }
 
-/* ---- Title: Work + Composer ---- */
-.perf-title {
-  margin-bottom: .5rem;
-}
+/* ---- Work Title (biggest) ---- */
 .work-title {
-  font-size: 1.4rem;
-  line-height: 1.2;
+  font-size: 1.75rem;
+  font-weight: 600;
   color: #e6e8f0;
-  font-weight: 500;
+  margin: 0 0 .25rem;
+  line-height: 1.2;
 }
 .work-title i { font-style: italic; }
+
+/* ---- Composer ---- */
 .composer {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #a0a8c0;
-  margin-top: .15rem;
+  margin: 0 0 1.25rem;
   font-weight: 400;
 }
 
-/* ---- ROLE: Made prominent ---- */
+/* ---- Role: high impact ---- */
 .perf-role {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #4a90e2;
+  background: rgba(74, 144, 226, .12);
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  margin: 0 0 1.25rem;
+  display: inline-block;
+  min-width: 160px;
+}
+
+/* ---- Company / Venue ---- */
+.card-subtitle {
+  font-size: 1rem;
+  color: #c8d0e0;
+  margin: 0 0 .35rem;
+  font-weight: 400;
+}
+
+/* ---- Date ---- */
+.card-date {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #c8d0e0;
-  margin: .75rem 0 .5rem;
-  padding-bottom: .35rem;
-  border-bottom: 1px solid #2a2d52;
-}
-
-/* ---- Venue / Organization ---- */
-.card-subtitle {
-  font-size: .95rem;
-  color: #a0a8c0;
-  margin-bottom: .25rem;
-}
-
-/* ---- Date (bottom) ---- */
-.card-date {
-  margin-top: auto;
-  font-weight: 600;
-  color: #c8d0e0;
-  font-size: 1rem;
+  color: #ffffff;
+  margin: 1rem 0 .75rem;
+  padding: .35rem .75rem;
+  background: rgba(255,255,255,.08);
+  border-radius: 6px;
+  display: inline-block;
 }
 
 /* ---- More info link ---- */
 .more-info {
-  font-size: .85rem;
+  font-size: .9rem;
   color: #4a90e2;
   text-decoration: none;
-  transition: color .2s ease;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
+  transition: color .2s ease;
 }
 .more-info i {
-  margin-right: .35rem;
-  font-size: 1rem;
+  margin-right: .4rem;
+  font-size: 1.1rem;
 }
 .more-info:hover {
   color: #7ab8ff;
 }
 
-/* ---- Section headings ---- */
+/* ---- Section titles ---- */
 .section-title {
   position: relative;
   display: inline-block;
-  padding-bottom: .5rem;
+  padding-bottom: .75rem;
+  font-size: 2.2rem;
+  font-weight: 600;
 }
 .section-title::after {
   content: "";
   position: absolute;
-  left: 0; bottom: 0;
-  width: 60px;
-  height: 3px;
+  left: 50%; transform: translateX(-50%);
+  bottom: 0;
+  width: 80px;
+  height: 4px;
   background: #4a90e2;
+  border-radius: 2px;
 }
 
 /* ---- Divider ---- */
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, #2a2d52, transparent);
-  margin: 3rem 0;
+  margin: 4rem 0;
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 767px) {
-  .work-title { font-size: 1.25rem; }
-  .composer   { font-size: .95rem; }
-  .perf-role  { font-size: 1.05rem; margin: .6rem 0 .4rem; }
-  .perf-card .card-body { padding: 1.5rem 1rem 1rem; }
+  .perf-card .card-body { padding: 1.75rem 1.25rem; }
+  .work-title { font-size: 1.5rem; }
+  .perf-role  { font-size: 1.2rem; padding: .4rem .8rem; }
+  .section-title { font-size: 1.9rem; }
+  .row.g-5 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 2rem; }
 }
 
 @media only screen and (min-width: 768px) {
