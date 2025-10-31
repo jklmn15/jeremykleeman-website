@@ -488,7 +488,7 @@ body {
 @media (min-width: 768px) {
   .bio-grid {
     grid-template-columns: 1fr 2fr; /* Headshot | Text */
-    align-items: center; /* ← NOW IT WORKS */
+    align-items: start; /* ← NOW IT WORKS */
     gap: 3rem;
   }
 }
