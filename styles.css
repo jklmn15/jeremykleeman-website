@@ -92,36 +92,58 @@
   box-shadow: 0 12px 30px rgba(255,255,255,.08);
 }
 
-/* ---- Image (logo) ---- */
+/* ---- Logo image ---- */
 .perf-card .card-img-top {
   width: 100%;
-  height: 120px;                 /* uniform height */
+  height: 120px;
   object-fit: contain;
-  background: #0e1027;           /* subtle backdrop for transparent logos */
+  background: #0e1027;
   padding: 1rem;
 }
 
-/* ---- Text area ---- */
-.perf-card .card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
-}
-.perf-card .card-title {
-  font-size: 1.35rem;
+/* ---- Title (two lines) ---- */
+.perf-title {
   margin-bottom: .75rem;
+}
+.work-title {
+  font-size: 1.35rem;
+  line-height: 1.2;
   color: #e6e8f0;
 }
-.perf-card .card-subtitle {
+.work-title i { font-style: italic; }
+.composer {
+  font-size: .95rem;
+  color: #a0a8c0;
+  margin-top: .15rem;
+}
+
+/* ---- Subtitles ---- */
+.card-subtitle {
   font-size: .95rem;
   color: #a0a8c0;
   margin-bottom: .25rem;
 }
-.perf-card .card-date {
-  margin-top: auto;              /* pushes date to bottom */
+
+/* ---- Date (pushed to bottom) ---- */
+.card-date {
+  margin-top: auto;
   font-weight: 600;
   color: #c8d0e0;
+}
+
+/* ---- More info link ---- */
+.more-info {
+  font-size: .85rem;
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.more-info i {
+  margin-right: .35rem;
+  font-size: 1rem;
+}
+.more-info:hover {
+  color: #7ab8ff;
 }
 
 /* ---- Section headings ---- */
@@ -139,17 +161,18 @@
   background: #4a90e2;
 }
 
-/* ---- Divider between Upcoming / Recent ---- */
+/* ---- Divider ---- */
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, #2a2d52, transparent);
   margin: 3rem 0;
 }
 
-/* ---- Responsive tweaks ---- */
+/* ---- Responsive ---- */
 @media (max-width: 767px) {
   .perf-card .card-img-top { height: 100px; }
-  .perf-card .card-title   { font-size: 1.2rem; }
+  .work-title { font-size: 1.2rem; }
+  .composer   { font-size: .9rem; }
 }
 
 @media only screen and (min-width: 768px) {
