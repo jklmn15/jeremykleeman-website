@@ -74,10 +74,10 @@
 }
 
 /* ============================================================= */
-/* ================ PERFORMANCES PAGE – FINAL DESIGN =========== */
+/* =============== PERFORMANCES PAGE – FINAL & PERFECT ========= */
 /* ============================================================= */
 
-/* ---- Card: centered, elevated, modern ---- */
+/* ---- Card: elevated, gradient, modern ---- */
 .perf-card {
   background: linear-gradient(145deg, #12142f, #0e1027);
   border-radius: 16px;
@@ -92,7 +92,7 @@
   background: linear-gradient(145deg, #141630, #101228);
 }
 
-/* ---- Card body: centered content ---- */
+/* ---- Card body: centered ---- */
 .perf-card .card-body {
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@
   flex: 1;
 }
 
-/* ---- Work Title (biggest) ---- */
+/* ---- Work Title ---- */
 .work-title {
   font-size: 1.75rem;
   font-weight: 600;
@@ -121,40 +121,52 @@
   font-weight: 400;
 }
 
-/* ---- Role: high impact ---- */
+/* ---- Role: blue badge ---- */
 .perf-role {
   font-size: 1.35rem;
   font-weight: 700;
   color: #4a90e2;
   background: rgba(74, 144, 226, .12);
-  padding: .5rem 1rem;
+  padding: .5rem 1.2rem;
   border-radius: 8px;
   margin: 0 0 1.25rem;
   display: inline-block;
   min-width: 160px;
 }
 
-/* ---- Company / Venue ---- */
-.card-subtitle {
-  font-size: 1rem;
-  color: #c8d0e0;
-  margin: 0 0 .35rem;
-  font-weight: 400;
-}
-
-/* ---- Date ---- */
-.card-date {
-  font-size: 1.1rem;
+/* ---- Company: more prominence ---- */
+.company {
+  font-size: 1.2rem;
   font-weight: 600;
   color: #ffffff;
-  margin: 1rem 0 .75rem;
-  padding: .35rem .75rem;
+  margin: 0 0 1rem;
+  padding: .4rem .8rem;
   background: rgba(255,255,255,.08);
   border-radius: 6px;
   display: inline-block;
 }
 
-/* ---- More info link ---- */
+/* ---- Venue + Date (grouped) ---- */
+.venue-date {
+  margin: 0 0 1rem;
+}
+.venue-date p {
+  font-size: 1rem;
+  color: #c8d0e0;
+  margin: 0 0 .25rem;
+}
+.venue-date .card-date {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: .5rem 0 0;
+  padding: .35rem .75rem;
+  background: rgba(255,255,255,.1);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* ---- More info ---- */
 .more-info {
   font-size: .9rem;
   color: #4a90e2;
@@ -202,9 +214,9 @@
 @media (max-width: 767px) {
   .perf-card .card-body { padding: 1.75rem 1.25rem; }
   .work-title { font-size: 1.5rem; }
-  .perf-role  { font-size: 1.2rem; padding: .4rem .8rem; }
+  .perf-role  { font-size: 1.2rem; padding: .4rem 1rem; }
+  .company    { font-size: 1.1rem; }
   .section-title { font-size: 1.9rem; }
-  .row.g-5 { --bs-gutter-x: 1.5rem; --bs-gutter-y: 2rem; }
 }
 
 @media only screen and (min-width: 768px) {
