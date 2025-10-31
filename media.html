@@ -71,9 +71,11 @@
     <h2 class="media-section-title text-center mb-5">Gallery & Reviews</h2>
 
     <div class="mosaic-grid">
-      <!-- IMAGES -->
+      <!-- IMAGES (Lightbox enabled with data-gallery) -->
       <div class="mosaic-item" data-aos="zoom-in">
-        <img src="images/opera1.jpg" alt="Opera production 1">
+        <a href="images/opera1.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 1">
+          <img src="images/opera1.jpg" alt="Opera production 1">
+        </a>
       </div>
 
       <div class="mosaic-item review-tile" data-aos="fade-up">
@@ -84,11 +86,15 @@
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="100">
-        <img src="images/opera2.jpg" alt="Opera production 2">
+        <a href="images/opera2.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 2">
+          <img src="images/opera2.jpg" alt="Opera production 2">
+        </a>
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="200">
-        <img src="images/opera3.jpg" alt="Opera production 3">
+        <a href="images/opera3.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 3">
+          <img src="images/opera3.jpg" alt="Opera production 3">
+        </a>
       </div>
 
       <div class="mosaic-item review-tile" data-aos="fade-up" data-aos-delay="300">
@@ -99,11 +105,15 @@
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="400">
-        <img src="images/opera4.jpg" alt="Opera production 4">
+        <a href="images/opera4.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 4">
+          <img src="images/opera4.jpg" alt="Opera production 4">
+        </a>
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="500">
-        <img src="images/opera5.jpg" alt="Opera production 5">
+        <a href="images/opera5.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 5">
+          <img src="images/opera5.jpg" alt="Opera production 5">
+        </a>
       </div>
 
       <div class="mosaic-item review-tile" data-aos="fade-up" data-aos-delay="600">
@@ -114,23 +124,39 @@
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="700">
-        <img src="images/opera6.jpg" alt="Opera production 6">
+        <a href="images/opera6.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 6">
+          <img src="images/opera6.jpg" alt="Opera production 6">
+        </a>
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="800">
-        <img src="images/opera7.jpg" alt="Opera production 7">
+        <a href="images/opera7.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 7">
+          <img src="images/opera7.jpg" alt="Opera production 7">
+        </a>
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="900">
-        <img src="images/opera8.jpg" alt="Opera production 8">
+        <a href="images/opera8.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 8">
+          <img src="images/opera8.jpg" alt="Opera production 8">
+        </a>
       </div>
 
       <div class="mosaic-item" data-aos="zoom-in" data-aos-delay="1000">
-        <img src="images/opera9.jpg" alt="Opera production 9">
+        <a href="images/opera9.jpg" class="glightbox" data-gallery="media-gallery" data-title="Opera Production 9">
+          <img src="images/opera9.jpg" alt="Opera production 9">
+        </a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- LIGHTBOX SCRIPT -->
+<link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    t
+
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
