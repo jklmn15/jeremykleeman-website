@@ -43,45 +43,45 @@
   </div>
 </nav>
 
-<!-- ==================== CONTACT HERO ==================== -->
+<!-- ==================== CONTACT CONTENT ==================== -->
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-8">
 
       <!-- REPRESENTATION -->
-      <div class="representation-card p-4 p-md-5 mb-5 text-center">
-        <h2 class="representation-title">Representation</h2>
+      <section class="representation-card p-4 p-md-5 mb-5 text-center" aria-labelledby="rep-heading">
+        <h2 id="rep-heading" class="representation-title">Representation</h2>
         <p class="representation-text mb-3">
           <strong>Jeremy</strong> is proudly represented by<br>
           <strong class="text-primary">Stephen McAllan</strong> at <strong>Emblem Artists</strong>
         </p>
         <p class="representation-email mb-0">
-          <a href="mailto:stephen@emblemartists.com" class="email-link">
+          <a href="mailto:stephen@emblemartists.com" class="email-link" aria-label="Email Stephen McAllan at Emblem Artists">
             stephen@emblemartists.com
           </a>
         </p>
-      </div>
+      </section>
 
       <!-- CONTACT FORM -->
-      <div class="contact-card p-4 p-md-5">
-        <h2 class="contact-title text-center mb-4">Get in Touch</h2>
+      <section id="contact-form" class="contact-card p-4 p-md-5" aria-labelledby="contact-heading">
+        <h2 id="contact-heading" class="contact-title text-center mb-4">Get in Touch</h2>
         <p class="text-center text-muted mb-5">Send a message directly to Jeremy</p>
 
         <form action="https://formspree.io/f/movplpan" method="POST" class="contact-form">
           <div class="mb-4">
-            <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" required>
+            <input type="text" name="name" class="form-control form-control-lg" placeholder="Your Name" aria-label="Your Name" required>
           </div>
           <div class="mb-4">
-            <input type="email" name="_replyto" class="form-control form-control-lg" placeholder="Your Email" required>
+            <input type="email" name="_replyto" class="form-control form-control-lg" placeholder="Your Email" aria-label="Your Email" required>
           </div>
           <div class="mb-4">
-            <textarea name="message" class="form-control form-control-lg" rows="6" placeholder="Your Message" required></textarea>
+            <textarea name="message" class="form-control form-control-lg" rows="6" placeholder="Your Message" aria-label="Your Message" required></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-primary btn-lg px-5">Send Message</button>
+            <button type="submit" class="btn btn-primary btn-lg px-5" aria-label="Send Message">Send Message</button>
           </div>
         </form>
-      </div>
+      </section>
 
     </div>
   </div>
