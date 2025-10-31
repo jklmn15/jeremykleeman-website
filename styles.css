@@ -254,3 +254,60 @@ body {
   .company { font-size: 1.1rem; }
   .section-title { font-size: 1.9rem; }
 }
+
+/* ============================================================= */
+/* ========================= INDEX PAGE ========================= */
+/* ============================================================= */
+
+/* Carousel images */
+#reviewCarousel img {
+  height: 70vh;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* Caption styling */
+.carousel-caption {
+  background: rgba(255, 255, 255, 0.92);
+  color: black;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  max-width: 90%;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.carousel-caption h5 {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.carousel-caption p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Mobile review text */
+#mobileReview {
+  font-size: 4.5vw;
+  line-height: 1.4;
+  color: #c5cdd6;
+}
+#mobileReview .minititle {
+  font-style: italic;
+  color: white;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
+}
+#mobileReview hr {
+  border-color: #2a2d52;
+  margin: 2rem 0;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  #reviewCarousel img { height: 50vh; border-radius: 12px; }
+  .carousel-caption { display: none !important; }
+}
