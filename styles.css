@@ -473,32 +473,46 @@ body {
 
 
 /* ============================================================= */
-/* ====================== BIOGRAPHY PAGE ====================== */
+/* ====================== BIOGRAPHY PAGE — FIXED ============== */
 /* ============================================================= */
 
+/* GRID LAYOUT — FORCES PERFECT ALIGNMENT */
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
 
-/* Headshot — perfectly centered */
+/* Headshot cell */
+.bio-image-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .bio-headshot {
   max-width: 100%;
   height: auto;
+  max-height: 80vh;
+  object-fit: contain;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   transition: transform 0.4s ease;
-  object-fit: cover;
 }
 .bio-headshot:hover {
   transform: scale(1.02);
 }
 
-/* Bio content */
+/* Text cell */
+.bio-text-cell {
+  display: flex;
+  align-items: center;
+}
 .bio-content {
+  width: 100%;
   font-family: "PT Serif", serif;
   color: #e6e8f0;
   line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* ← KEY: Vertically centers text */
-  min-height: 100%; /* Ensures full height alignment */
 }
 .bio-intro {
   font-size: 1.4rem;
@@ -527,7 +541,20 @@ body {
   border-top: 1px solid rgba(74, 144, 226, 0.3);
 }
 
-/* Mobile */
+/* TABLET & DESKTOP: SIDE-BY-SIDE + TRUE CENTER */
+@media (min-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 3rem;
+    align-items: center; /* ← NOW WORKS */
+  }
+  .bio-headshot {
+    max-height: 100%;
+    max-width: 90%;
+  }
+}
+
+/* MOBILE: STACKED, HEADSHOT ON TOP */
 @media (max-width: 767px) {
   .bio-intro {
     font-size: 6.5vw;
@@ -540,20 +567,14 @@ body {
   }
   .bio-awards {
     font-size: 5.2vw;
-    margin-top: 1.2rem;
   }
   .bio-headshot {
     border-radius: 16px;
-    margin-bottom: 1.5rem;
     max-height: 70vh;
+    margin: 0 auto 1.5rem;
+    display: block;
   }
-  .row {
-    row-gap: 1.5rem;
+  .bio-grid {
+    gap: 1.5rem;
   }
-}
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 991px) {
-  .bio-intro { font-size: 1.3rem; }
-  .bio-content p { font-size: 1rem; }
 }
