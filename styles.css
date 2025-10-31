@@ -184,10 +184,7 @@ body {
   font-weight: 600;
   color: #ffffff;
   margin: 0 0 1rem;
-  padding: .4rem .8rem;
-  background: rgba(255,255,255,.08);
-  border-radius: 6px;
-  display: inline-block;
+  /* Removed: padding, background, border-radius, inline-block */
 }
 
 .venue-date {
