@@ -801,16 +801,16 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease, filter 0.4s ease;
   border-radius: 12px;
+  transition: transform 0.5s ease, filter 0.4s ease;
 }
 
 .mosaic-item:hover img {
   transform: scale(1.06);
-  filter: brightness(1.15);
+  filter: brightness(1.1);
 }
 
-/* Review tiles styled like editorial cards */
+/* Review tiles blend seamlessly with photos */
 .review-tile {
   background: linear-gradient(145deg, #12142f, #0e1027);
   color: #e6e8f0;
@@ -823,6 +823,7 @@ body {
   font-family: "PT Serif", serif;
   font-style: italic;
   border: 1px solid rgba(74,144,226,0.2);
+  border-radius: 12px;
 }
 
 .review-tile blockquote {
@@ -837,7 +838,7 @@ body {
   color: #4a90e2;
 }
 
-/* Taller items for visual rhythm */
+/* Give some items more visual rhythm */
 .mosaic-item:nth-child(3n) {
   grid-row: span 2;
 }
@@ -845,12 +846,24 @@ body {
   grid-column: span 2;
 }
 
-/* Responsive adjustments */
+/* Lightbox color adjustments */
+.glightbox-clean .gdesc-inner {
+  color: #e6e8f0;
+  font-family: "PT Serif", serif;
+}
+.glightbox-clean .gslide-title {
+  font-family: "Bebas Neue", sans-serif;
+  color: #4a90e2;
+}
+
+/* Responsive tweaks */
 @media (max-width: 768px) {
   .mosaic-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     grid-auto-rows: 180px;
   }
-  .review-tile blockquote { font-size: 0.9rem; }
+  .review-tile blockquote {
+    font-size: 0.9rem;
+  }
 }
 
