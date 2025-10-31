@@ -470,3 +470,80 @@ body {
       0 0 48px rgba(74, 144, 226, 0.3);
   }
 }
+
+
+/* ============================================================= */
+/* ====================== BIOGRAPHY PAGE ====================== */
+/* ============================================================= */
+
+/* Headshot */
+.bio-headshot {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease;
+}
+.bio-headshot:hover {
+  transform: scale(1.02);
+}
+
+/* Bio content */
+.bio-content {
+  font-family: "PT Serif", serif;
+  color: #e6e8f0;
+  line-height: 1.7;
+}
+.bio-intro {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+.bio-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+.bio-content strong {
+  color: #4a90e2;
+}
+.bio-content em {
+  font-style: italic;
+  color: #c8d0e0;
+}
+.bio-awards {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(74, 144, 226, 0.3);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .bio-intro {
+    font-size: 6.5vw;
+    margin-bottom: 1.2rem;
+  }
+  .bio-content p {
+    font-size: 4.8vw;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  .bio-awards {
+    font-size: 5.2vw;
+    margin-top: 1.2rem;
+  }
+  .bio-headshot {
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .bio-intro { font-size: 1.3rem; }
+  .bio-content p { font-size: 1rem; }
+}
