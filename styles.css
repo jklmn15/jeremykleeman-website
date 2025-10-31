@@ -7,6 +7,14 @@
   box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
+.performances img {
+  max-width: 200px;     /* keeps them relatively small */
+  height: auto;          /* maintains proportions */
+  object-fit: contain;   /* no cropping, just scales nicely */
+  display: block;
+  margin: 0 auto 1rem;   /* centers and adds space below */
+  border-radius: 8px;    /* optional, soft edges */
+}
 
 .carousel-caption {
     color: Black;
