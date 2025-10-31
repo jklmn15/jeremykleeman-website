@@ -476,15 +476,24 @@ body {
 /* ====================== BIOGRAPHY PAGE — FIXED ============== */
 /* ============================================================= */
 
-/* GRID LAYOUT — FORCES PERFECT ALIGNMENT */
+/* GRID: Mobile = stacked, Desktop = side-by-side */
 .bio-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr; /* Default: 1 column (mobile) */
+  gap: 2rem;
   align-items: start;
 }
 
-/* Headshot cell */
+/* Desktop: 2 columns, headshot on left */
+@media (min-width: 768px) {
+  .bio-grid {
+    grid-template-columns: 1fr 2fr; /* Headshot | Text */
+    align-items: center; /* ← NOW IT WORKS */
+    gap: 3rem;
+  }
+}
+
+/* Headshot */
 .bio-image-cell {
   display: flex;
   justify-content: center;
@@ -493,17 +502,16 @@ body {
 .bio-headshot {
   max-width: 100%;
   height: auto;
-  max-height: 80vh;
-  object-fit: contain;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.4);
   transition: transform 0.4s ease;
+  object-fit: contain;
 }
 .bio-headshot:hover {
   transform: scale(1.02);
 }
 
-/* Text cell */
+/* Text */
 .bio-text-cell {
   display: flex;
   align-items: center;
@@ -541,20 +549,7 @@ body {
   border-top: 1px solid rgba(74, 144, 226, 0.3);
 }
 
-/* TABLET & DESKTOP: SIDE-BY-SIDE + TRUE CENTER */
-@media (min-width: 768px) {
-  .bio-grid {
-    grid-template-columns: 1fr 1.4fr;
-    gap: 3rem;
-    align-items: center; /* ← NOW WORKS */
-  }
-  .bio-headshot {
-    max-height: 100%;
-    max-width: 90%;
-  }
-}
-
-/* MOBILE: STACKED, HEADSHOT ON TOP */
+/* Mobile */
 @media (max-width: 767px) {
   .bio-intro {
     font-size: 6.5vw;
@@ -573,9 +568,6 @@ body {
     max-height: 70vh;
     margin: 0 auto 1.5rem;
     display: block;
-  }
-  .bio-grid {
-    gap: 1.5rem;
   }
 }
 
