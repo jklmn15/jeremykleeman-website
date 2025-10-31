@@ -72,3 +72,392 @@ body {
 .minititle { 
   font-size: 5vw; 
   color: white; 
+}
+
+.bioimage { 
+  width: 80vw; 
+}
+
+.headertext {
+  font-size: 6.5vw;
+  line-height: 1.25;
+  color: white;
+}
+
+/* ============================================================= */
+/* ====================== TABLET & DESKTOP ===================== */
+/* ============================================================= */
+
+@media only screen and (min-width: 768px) {
+  .phonetext { display: none; }
+  .navbar-nav { float: right; }
+
+  .navbar-nav .nav-link { 
+    font-size: 3vw; 
+  }
+
+  .sitetext {
+    font-size: 1.25vw;
+    line-height: 1.5;
+    color: #e6e8f0;
+  }
+
+  .biotext {
+    font-size: 1.25vw;
+    line-height: 1.5;
+    color: #e6e8f0;
+    padding-left: 1.5vw;
+  }
+
+  .bioimage { 
+    width: 250vw; 
+  }
+
+  .headertext {
+    font-size: 2vw;
+    line-height: 1.5;
+    color: white;
+  }
+}
+
+/* ============================================================= */
+/* ================== PERFORMANCES PAGE STYLES ================= */
+/* ============================================================= */
+
+/* Cards */
+.perf-card {
+  background: linear-gradient(145deg, #12142f, #0e1027);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .3s ease;
+  box-shadow: 0 8px 25px rgba(0,0,0,.3);
+  height: 100%;
+}
+.perf-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(74, 144, 226, .15);
+  background: linear-gradient(145deg, #141630, #101228);
+}
+
+.perf-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  flex: 1;
+}
+
+/* Typography */
+.work-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #e6e8f0;
+  margin: 0 0 .25rem;
+  line-height: 1.2;
+}
+.work-title i { font-style: italic; }
+
+.composer {
+  font-size: 1.1rem;
+  color: #a0a8c0;
+  margin: 0 0 1.25rem;
+  font-weight: 400;
+}
+
+.perf-role {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #4a90e2;
+  background: rgba(74, 144, 226, .12);
+  padding: .5rem 1.2rem;
+  border-radius: 8px;
+  margin: 0 0 1.25rem;
+  display: inline-block;
+  min-width: 160px;
+}
+
+.company {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
+.venue-date {
+  margin: 0 0 1rem;
+}
+.venue-date p {
+  font-size: 1rem;
+  color: #c8d0e0;
+  margin: 0 0 .25rem;
+}
+.venue-date .card-date {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: .5rem 0 0;
+  padding: .35rem .75rem;
+  background: rgba(255,255,255,.1);
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.more-info {
+  font-size: .9rem;
+  color: #4a90e2;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  transition: color .2s ease;
+}
+.more-info i {
+  margin-right: .4rem;
+  font-size: 1.1rem;
+}
+.more-info:hover { color: #7ab8ff; }
+
+/* Section titles */
+.section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: .75rem;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  bottom: 0;
+  width: 80px;
+  height: 4px;
+  background: #4a90e2;
+  border-radius: 2px;
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2a2d52, transparent);
+  margin: 4rem 0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767px) {
+  .perf-card .card-body { padding: 1.75rem 1.25rem; }
+  .work-title { font-size: 1.5rem; }
+  .perf-role { font-size: 1.2rem; padding: .4rem 1rem; }
+  .company { font-size: 1.1rem; }
+  .section-title { font-size: 1.9rem; }
+}
+
+/* ============================================================= */
+/* ============================ HOMEPAGE ======================= */
+/* ============================================================= */
+
+.hero-carousel-container {
+  position: relative;
+  margin: 2rem 0 4rem;
+  overflow: hidden;
+}
+
+/* Full-bleed, responsive images */
+.carousel-img {
+  width: 100%;
+  height: 75vh;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transition: transform 0.6s ease;
+}
+.carousel-item.active .carousel-img {
+  transform: scale(1.02);
+}
+
+/* Translucent glass caption */
+.review-caption {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 720px;
+  background: rgba(255, 255, 255, 0.82);
+  color: #000;
+  padding: 1.2rem 1.6rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.4);
+  text-align: center;
+  font-family: "PT Serif", serif;
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+.review-caption h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  line-height: 1.3;
+  color: #1a1a1a;
+}
+.review-caption p {
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin: 0 0 0.4rem;
+  color: #2c2c2c;
+}
+.review-caption .reviewer {
+  font-size: 0.82rem;
+  color: #444;
+  font-style: italic;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+/* Hover lift */
+.carousel-item:hover .review-caption {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 16px 45px rgba(0,0,0,0.3);
+}
+
+/* Custom indicators */
+.custom-indicators {
+  bottom: -3rem;
+}
+.custom-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+}
+.custom-indicators button.active {
+  background: #4a90e2;
+  transform: scale(1.3);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .carousel-img {
+    height: 55vh;
+    border-radius: 14px;
+    object-position: center 15%;
+  }
+  .review-caption,
+  .custom-indicators,
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none !important;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .carousel-img { height: 65vh; }
+  .review-caption {
+    width: 90%;
+    padding: 1.5rem 1.8rem;
+  }
+}
+
+/* Mobile review text */
+#mobileReview {
+  font-size: 4.5vw;
+  line-height: 1.4;
+  color: #c5cdd6;
+}
+#mobileReview .minititle {
+  font-style: italic;
+  color: white;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
+}
+#mobileReview hr {
+  border-color: #2a2d52;
+  margin: 2rem 0;
+  opacity: 0.25;
+}
+
+/* ============================================================= */
+/* ====================== NAVBAR — BRAND POP ================== */
+/* ============================================================= */
+
+/* Brand container */
+.navbar-brand {
+  padding: 0.5rem 0;
+  margin-right: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Name split */
+.brand-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+  letter-spacing: 0.5px;
+}
+.brand-surname {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  color: #4a90e2;
+  text-shadow: 0 0 12px rgba(74, 144, 226, 0.6);
+  letter-spacing: 1px;
+}
+
+/* MOBILE: HUGE & CENTERED */
+@media (max-width: 767px) {
+  .navbar-brand {
+    font-size: 7.5vw !important;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
+  }
+  .brand-name,
+  .brand-surname {
+    font-size: 7.5vw;
+    display: block;
+  }
+  .brand-surname {
+    margin-top: -0.8vw;
+  }
+  .navbar-toggler {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 6vw;
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+}
+
+/* TABLET & DESKTOP */
+@media (min-width: 768px) {
+  .brand-name,
+  .brand-surname {
+    font-size: 2.8rem;
+  }
+  .brand-surname {
+    margin-left: 0.2rem;
+  }
+  .navbar-brand:hover .brand-name,
+  .navbar-brand:hover .brand-surname {
+    text-shadow: 0 0 16px rgba(74, 144, 226, 0.7);
+    transition: text-shadow 0.3s ease;
+  }
+}
