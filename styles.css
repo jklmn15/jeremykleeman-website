@@ -722,3 +722,54 @@ body {
   color: #a0a8c0 !important;
 }
 
+
+/* ============================================================= */
+/* ====================== MEDIA PAGE STYLES ==================== */
+/* ============================================================= */
+
+.media-page .media-hero {
+  background: linear-gradient(180deg, #01021c 0%, #12142f 100%);
+  padding: 100px 0 60px;
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.media-page .media-section-title {
+  font-family: "Bebas Neue", sans-serif;
+  color: #e6e8f0;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #4a90e2;
+  display: inline-block;
+  padding-bottom: 6px;
+  margin-bottom: 2rem;
+}
+
+.media-page .hover-zoom {
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+.media-page .hover-zoom:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(74,144,226,0.4);
+}
+
+.media-page .photo-gallery {
+  background: #0e1027;
+}
+
+.media-page .reviews {
+  background: linear-gradient(145deg, #f8f9fc, #e6e8f0);
+  color: #000;
+}
+
+.media-page .review-text {
+  font-style: italic;
+  font-family: "PT Serif", serif;
+  font-size: 1.1em;
+  color: #12142f;
+}
+
+.media-page .review-source {
+  font-weight: 600;
+  color: #333;
+}
+
