@@ -926,3 +926,21 @@ body {
   }
 }
 
+/* ============================================================= */
+/* ========== REVIEW TILE RESPONSIVE FONT SCALING =============== */
+/* ============================================================= */
+
+.review-tile blockquote {
+  margin: 0;
+  font-size: clamp(0.85rem, 1vw + 0.6rem, 1.1rem);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.review-tile footer {
+  margin-top: 0.8rem;
+  font-size: clamp(0.7rem, 0.8vw + 0.4rem, 0.9rem);
+  font-style: normal;
+  color: #4a90e2;
+}
+
