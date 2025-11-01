@@ -746,6 +746,38 @@ body {
   color: #a0a8c0 !important;
 }
 
+/* ============================================================= */
+/* ========================= PAGE HERO ========================= */
+/* ============================================================= */
+
+/* Base hero banner used across all pages */
+.page-hero {
+  background: linear-gradient(180deg, #01021c 0%, #12142f 100%);
+  padding: 100px 0 60px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* Title */
+.page-section-title {
+  font-family: "Bebas Neue", sans-serif;
+  color: #e6e8f0;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #4a90e2;
+  display: inline-block;
+  padding-bottom: 6px;
+  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+/* Subtitle */
+.page-hero p.lead {
+  font-family: "PT Serif", serif;
+  color: #c8d0e0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin-top: 0.5rem;
+}
 
 /* ============================================================= */
 /* ====================== MEDIA PAGE STYLES ==================== */
