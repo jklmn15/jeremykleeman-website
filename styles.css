@@ -476,6 +476,30 @@ body {
 /* ====================== BIOGRAPHY PAGE — FIXED ============== */
 /* ============================================================= */
 
+/* ============================================================= */
+/* ====================== BIOGRAPHY HERO ======================= */
+/* ============================================================= */
+
+.bio-hero {
+  background: linear-gradient(180deg, #01021c 0%, #12142f 100%);
+  padding: 100px 0 60px;
+  color: white;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.bio-hero h1 {
+  font-family: "Bebas Neue", sans-serif;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.bio-hero p {
+  font-family: "PT Serif", serif;
+  color: #c8d0e0;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
 /* GRID: Mobile = stacked, Desktop = side-by-side */
 .bio-grid {
   display: grid;
