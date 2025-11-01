@@ -759,7 +759,7 @@ body {
   text-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-/* Title */
+/* Title — matches Media hero exactly */
 .page-section-title {
   font-family: "Bebas Neue", sans-serif;
   color: #e6e8f0;
@@ -767,17 +767,22 @@ body {
   border-bottom: 2px solid #4a90e2;
   display: inline-block;
   padding-bottom: 6px;
-  margin-bottom: 1rem;
-  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  text-transform: lowercase; /* ✅ this ensures the Media-style lowercase */
 }
 
-/* Subtitle */
+/* Subtitle — matches typography tone under Media hero */
 .page-hero p.lead {
   font-family: "PT Serif", serif;
   color: #c8d0e0;
+  font-style: italic;
+  font-weight: 400;
   font-size: clamp(1rem, 2vw, 1.25rem);
   margin-top: 0.5rem;
 }
+
 
 /* ============================================================= */
 /* ====================== MEDIA PAGE STYLES ==================== */
