@@ -856,6 +856,10 @@ body {
   color: #4a90e2;
 }
 
+.mosaic-item {
+  outline: 1px solid red;
+}
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .mosaic-grid {
