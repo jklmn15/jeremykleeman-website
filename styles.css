@@ -856,6 +856,55 @@ body {
   color: #4a90e2;
 }
 
+/* ============================================================= */
+/* ========== MEDIA MOSAIC – IMAGE ORIENTATION CONTROLS ========= */
+/* ============================================================= */
+
+/* ============================================================= */
+/* ========== DEFAULT TILE SIZE — CONSISTENT SQUARES =========== */
+/* ============================================================= */
+
+.mosaic-item:not(.portrait):not(.landscape):not(.large):not(.review-tile) {
+  grid-row: span 1;
+  grid-column: span 1;
+}
+
+
+/* default square = 1×1 (already defined by grid-auto-rows) */
+
+.mosaic-item.portrait {
+  grid-row: span 2;
+}
+
+.mosaic-item.landscape {
+  grid-column: span 2;
+}
+
+.mosaic-item.large {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+/* keep reviews visually consistent */
+.review-tile.portrait { grid-row: span 2; }
+.review-tile.landscape { grid-column: span 2; }
+.review-tile.large {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.mosaic-item.landscape img {
+  object-position: center 60%;
+}
+
+.mosaic-item img {
+  ...
+  transform-origin: center center;
+  image-rendering: auto;
+}
+
+
+
 /* Responsive tweaks */
 @media (max-width: 768px) {
   .mosaic-grid {
@@ -864,6 +913,16 @@ body {
   }
   .review-tile blockquote {
     font-size: 0.9rem;
+  }
+}
+
+/* mobile override – everything stacks neatly */
+@media (max-width: 768px) {
+  .mosaic-item.portrait,
+  .mosaic-item.landscape,
+  .mosaic-item.large {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
 }
 
