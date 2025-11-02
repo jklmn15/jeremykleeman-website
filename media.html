@@ -199,5 +199,18 @@
         });
       });
     </script>
+  <!-- ==================== FOOTER PLACEHOLDER ==================== -->
+<div id="footer-placeholder"></div>
+
+<script>
+  // Dynamically load the shared footer
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    })
+    .catch(err => console.error('Error loading footer:', err));
+</script>
+
   </body>
 </html>
