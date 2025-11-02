@@ -1029,3 +1029,28 @@ body {
   color: #4a90e2;
 }
 
+/* ==================== FOOTER ==================== */
+.site-footer {
+  background: linear-gradient(180deg, #0e1027 0%, #01021c 100%);
+  border-top: 1px solid rgba(74, 144, 226, 0.2);
+  color: #e6e8f0;
+  font-family: "PT Serif", serif;
+  text-align: center;
+}
+
+.site-footer .social-links a {
+  color: #4a90e2;
+  font-size: 1.6rem;
+  margin: 0 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.site-footer .social-links a:hover {
+  color: #7ab8ff;
+  text-shadow: 0 0 8px rgba(74,144,226,0.4);
+}
+
+.site-footer p {
+  color: #a0a8c0;
+  font-size: 0.95rem;
+}
