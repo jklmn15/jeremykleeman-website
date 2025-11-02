@@ -172,13 +172,19 @@
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
 
-      // Find the 'Upcoming' section in performances.html (first .sitetext row)
+      // Find the first 'Upcoming' section in performances.html
       const upcoming = doc.querySelector('.sitetext.row');
+      const container = document.querySelector('#upcoming-container');
 
       if (upcoming) {
-        document.querySelector('#upcoming-container').innerHTML = upcoming.innerHTML;
+        // Get all the performance cards
+        const cards = upcoming.querySelectorAll('.col');
+        // Limit to the first two
+        const limitedCards = Array.from(cards).slice(0, 2);
+        // Add them to the homepage container
+        limitedCards.forEach(card => container.appendChild(card.cloneNode(true)));
       } else {
-        document.querySelector('#upcoming-container').innerHTML =
+        container.innerHTML =
           '<p class="text-muted">Upcoming performances will appear here soon.</p>';
       }
     })
@@ -188,6 +194,7 @@
         '<p class="text-muted">Unable to load upcoming performances.</p>';
     });
 </script>
+
 
 
 <!-- BOOTSTRAP JS -->
