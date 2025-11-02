@@ -828,6 +828,11 @@ body {
   margin-right: auto;
 }
 
+.section-title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 
 .media-page .hover-zoom {
   transition: transform 0.4s ease, box-shadow 0.3s ease;
