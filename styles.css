@@ -818,6 +818,16 @@ body {
   text-transform: uppercase; /* ensures capitalisation */
 }
 
+/* === UNIVERSAL CENTERING FOR SECTION TITLES === */
+.media-section-title,
+.section-title,
+.page-section-title {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .media-page .hover-zoom {
   transition: transform 0.4s ease, box-shadow 0.3s ease;
