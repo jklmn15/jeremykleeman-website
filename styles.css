@@ -98,8 +98,9 @@ body {
   font-weight: 400;
   font-size: clamp(1.6rem, 3vw, 2.4rem);  /* slightly smaller than before */
   text-shadow: 0 0 8px rgba(255,255,255,0.1);
+  margin-left: auto;
+  margin-right: auto;
 }
-
 
 /* ============================================================= */
 /* ====================== TABLET & DESKTOP ===================== */
