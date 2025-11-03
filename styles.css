@@ -90,14 +90,14 @@ body {
   color: #e6e8f0;
   letter-spacing: 1px;
   border-bottom: 2px solid #4a90e2;
-  display: block;
+  display: inline-block;              /* keeps underline only under text */
   text-align: center;
   padding-bottom: 6px;
   margin-bottom: 2rem;
   text-transform: uppercase;
   font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-shadow: 0 0 12px rgba(255,255,255,0.1);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);  /* slightly smaller than before */
+  text-shadow: 0 0 8px rgba(255,255,255,0.1);
 }
 
 
