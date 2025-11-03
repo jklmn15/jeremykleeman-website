@@ -89,18 +89,27 @@ body {
   font-family: "Bebas Neue", sans-serif;
   color: #e6e8f0;
   letter-spacing: 1px;
-  border-bottom: 2px solid #4a90e2;
-  display: inline-block;              /* keeps underline only under text */
-  text-align: center;
-  padding-bottom: 6px;
-  margin-bottom: 2rem;
-  text-transform: uppercase;
+  display: block;                 /* ensures auto centering works */
+  text-align: center;             /* centers the text */
+  margin: 0 auto 2rem;            /* centers the element in any layout */
   font-weight: 400;
-  font-size: clamp(1.6rem, 3vw, 2.4rem);  /* slightly smaller than before */
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
   text-shadow: 0 0 8px rgba(255,255,255,0.1);
-  margin-left: auto;
-  margin-right: auto;
+  padding-bottom: 0.5rem;         /* space above the underline */
+  position: relative;
+  border-bottom: none;            /* IMPORTANT: remove border method */
 }
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 80px;                    /* short underline width */
+  height: 3px;
+  background: #4a90e2;
+  border-radius: 2px;
+  margin: 0.5rem auto 0;          /* centers the underline */
+}
+
 
 /* ============================================================= */
 /* ====================== TABLET & DESKTOP ===================== */
