@@ -230,6 +230,15 @@ body {
   opacity:1;
 }
 
+.highlight-item {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;  /* prevents layout reflows during animation */
+  will-change: transform, opacity;  /* gives GPU hint to Chrome */
+}
+.highlight-item.open {
+  background-color: rgba(255,255,255,0.05);
+}
 
 
 /* ============================================================= */
