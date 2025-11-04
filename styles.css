@@ -231,6 +231,32 @@ body {
   background-color: rgba(255,255,255,0.12);
 }
 
+/* override light backgrounds and boost contrast */
+.career-highlights .accordion-body {
+  background-color: transparent !important;
+}
+
+.role-front,
+.role-back {
+  background-color: rgba(15, 20, 45, 0.9); /* deep navy glass look */
+  color: #fff;
+}
+
+.role-card {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.role-front h4 {
+  color: #e6e8ff; /* brightened text */
+}
+
+.role-front p {
+  color: #c7c9ff;
+}
+
+.role-back {
+  background-color: rgba(20, 25, 55, 0.95); /* slightly lighter to hint at depth */
+}
 
 /* ============================================================= */
 /* ================== PERFORMANCES PAGE STYLES ================= */
