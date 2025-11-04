@@ -155,107 +155,67 @@ body {
   box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 
-.career-highlights .accordion-button {
-  background-color: rgba(255,255,255,0.08);
-  color: #fff;
+.highlight-subtitle {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.4rem;
+  color: #d0d3ff;
+  font-size: 1.6rem;
+  text-transform: uppercase;
   letter-spacing: 1px;
-  transition: all 0.3s ease;
-  border: none;
-}
-
-.career-highlights .accordion-button:hover {
-  background-color: rgba(255,255,255,0.15);
-  text-shadow: 0 0 10px rgba(255,255,255,0.4);
-}
-
-.career-highlights .accordion-body {
-  background-color: rgba(255,255,255,0.04);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  display: inline-block;
+  padding-bottom: 0.2rem;
 }
 
 .role-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  perspective: 1000px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
 }
 
-.role-card {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
+.expand-card {
+  background-color: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.role-card:hover { transform: rotateY(180deg); }
-
-.role-front, .role-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 14px;
-  backface-visibility: hidden;
-  background-color: rgba(255,255,255,0.06);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+.expand-card:hover {
+  background-color: rgba(255,255,255,0.1);
 }
 
-.role-front h4 {
+.card-header {
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.card-header h4 {
   font-family: "Bebas Neue", sans-serif;
-  color: #d0d3ff;
   font-size: 1.3rem;
+  color: #d0d3ff;
   margin-bottom: 0.3rem;
 }
 
-.role-front p {
+.card-header p {
   font-family: "PT Serif", serif;
   font-style: italic;
   font-size: 0.95rem;
+  color: #e4e4e4;
 }
 
-.role-back {
-  transform: rotateY(180deg);
+.card-body {
+  display: none;
+  padding: 0 1.2rem 1.2rem 1.2rem;
   font-family: "PT Serif", serif;
   font-size: 0.9rem;
-  line-height: 1.3;
-  background-color: rgba(255,255,255,0.12);
+  line-height: 1.4;
+  color: #f0f0f0;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* override light backgrounds and boost contrast */
-.career-highlights .accordion-body {
-  background-color: transparent !important;
-}
-
-.role-front,
-.role-back {
-  background-color: rgba(15, 20, 45, 0.9); /* deep navy glass look */
-  color: #fff;
-}
-
-.role-card {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.role-front h4 {
-  color: #e6e8ff; /* brightened text */
-}
-
-.role-front p {
-  color: #c7c9ff;
-}
-
-.role-back {
-  background-color: rgba(20, 25, 55, 0.95); /* slightly lighter to hint at depth */
+.expand-card.open .card-body {
+  display: block;
 }
 
 /* ============================================================= */
