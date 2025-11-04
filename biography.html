@@ -300,14 +300,22 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
-  document.querySelectorAll(".highlight-item").forEach(card=>{
-    card.addEventListener("click",()=>{
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".highlight-item");
+
+  items.forEach((card) => {
+    card.addEventListener("click", () => {
+      // Close all other open cards
+      items.forEach((other) => {
+        if (other !== card) other.classList.remove("open");
+      });
+      // Toggle the clicked card
       card.classList.toggle("open");
     });
   });
 });
 </script>
+
 
 
   
