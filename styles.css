@@ -619,6 +619,55 @@ body {
   z-index: 9999;
 }
 
+/* ====== Sexy frosted dropdown animation ====== */
+.navbar-collapse {
+  background: rgba(1, 2, 28, 0.75) !important;   /* translucent midnight blue */
+  backdrop-filter: blur(12px) saturate(180%);    /* Apple-style glass blur */
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto !important;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 9999;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0 0 16px 16px;
+
+  /* animation start state */
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* when expanded */
+.navbar-collapse.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* cascading fade for links */
+.navbar-nav .nav-link {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.4s ease;
+}
+.navbar-collapse.show .nav-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+.navbar-collapse.show .nav-link:nth-child(1) { transition-delay: 0.05s; }
+.navbar-collapse.show .nav-link:nth-child(2) { transition-delay: 0.1s; }
+.navbar-collapse.show .nav-link:nth-child(3) { transition-delay: 0.15s; }
+.navbar-collapse.show .nav-link:nth-child(4) { transition-delay: 0.2s; }
+.navbar-collapse.show .nav-link:nth-child(5) { transition-delay: 0.25s; }
+
 
 /* TABLET & DESKTOP: BIGGER, HOVER GLOW */
 @media (min-width: 768px) {
