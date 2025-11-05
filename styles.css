@@ -788,6 +788,20 @@ body {
   text-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
 }
 
+.email-link {
+  color: #e6e8f0;
+  text-decoration: none;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+
+.email-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+
 /* Contact Card */
 .contact-card {
   background: #0e1027;
@@ -895,6 +909,8 @@ body {
 .text-muted {
   color: #a0a8c0 !important;
 }
+
+
 
 /* ============================================================= */
 /* ========================= PAGE HERO ========================= */
