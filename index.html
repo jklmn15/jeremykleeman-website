@@ -66,14 +66,19 @@
 </section>-->
 
 
-<!-- ==================== HERO CAROUSEL — RANDOM ==================== -->
 <div class="hero-carousel-container">
   <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-    
-    <!-- INDICATORS: EMPTY — SCRIPT WILL FILL THEM -->
-    <div class="carousel-indicators custom-indicators"></div>
 
-    <!-- SLIDES: ADD NEW ONES ANYWHERE — NO ORDER, NO DOTS -->
+    <!-- INDICATORS -->
+    <div class="carousel-indicators custom-indicators">
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+
+    <!-- SLIDES -->
     <div class="carousel-inner">
 
       <!-- SLIDE 1 -->
@@ -89,10 +94,11 @@
         </div>
       </div>
 
+      <!-- SLIDE 2 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/GilgameshHero-mobile.jpg">
-          <img src="images/GilgameshHero.jpg" class="carousel-img" alt="...">
+          <img src="images/GilgameshHero.jpg" class="carousel-img" alt="Gilgamesh — Opera Australia / Sydney Chamber Opera">
         </picture>
         <div class="review-caption">
           <h3><i>Gilgamesh</i> — Opera Australia / Sydney Chamber Opera, 2024</h3>
@@ -101,10 +107,11 @@
         </div>
       </div>
 
+      <!-- SLIDE 3 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/NZSO.jpeg">
-          <img src="images/NZSO.jpeg" class="carousel-img" alt="...">
+          <img src="images/NZSO.jpeg" class="carousel-img" alt="Stabat Mater — New Zealand Symphony Orchestra">
         </picture>
         <div class="review-caption">
           <h3><i>Stabat Mater</i> — New Zealand Symphony Orchestra, 2025</h3>
@@ -113,7 +120,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 2 -->
+      <!-- SLIDE 4 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/FigaroSOSA2.jpg">
@@ -126,7 +133,7 @@
         </div>
       </div>
 
-      <!-- SLIDE 3 -->
+      <!-- SLIDE 5 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/CorcoranSOSA.jpg">
@@ -138,24 +145,6 @@
           <p class="reviewer">— Pat Wilson, <em>Glam Adelaide</em></p>
         </div>
       </div>
-
-      
-
-      <!-- ADD NEW SLIDES HERE — ANY ORDER, NO DOTS -->
-      <!-- Example:
-      <div class="carousel-item">
-        <picture>
-          <source media="(max-width: 767px)" srcset="images/NEW-mobile.jpg">
-          <img src="images/NEW.jpg" class="carousel-img" alt="...">
-        </picture>
-        <div class="review-caption">
-          <h3><i>Title</i> — Company, Year</h3>
-          <p>“Quote...”</p>
-          <p class="reviewer">— Name, <em>Pub</em></p>
-        </div>
-      </div>
-      -->
-
     </div>
 
     <!-- CONTROLS -->
@@ -168,12 +157,8 @@
       <span class="visually-hidden">Next</span>
     </button>
   </div>
-
-  <!-- MOBILE REVIEW TEXT (AUTO-SYNCED) -->
-  <div class="container d-md-none mt-4 px-4">
-    <div id="mobileReview" class="text-center phonetext"></div>
-  </div>
 </div>
+
 
 <!-- ==================== UPCOMING PERFORMANCES WIDGET ==================== -->
 <section id="upcoming-widget" class="container my-5">
