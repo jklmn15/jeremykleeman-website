@@ -606,6 +606,20 @@ body {
   }
 }
 
+/* Fix mobile dropdown height issue */
+.navbar-collapse {
+  background-color: rgba(1, 2, 28, 0.95) !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto !important;    /* key line — only as tall as content */
+  max-height: 90vh;           /* safety: avoids accidental overflow */
+  overflow-y: auto;           /* allows scrolling if needed */
+  z-index: 9999;
+}
+
+
 /* TABLET & DESKTOP: BIGGER, HOVER GLOW */
 @media (min-width: 768px) {
   .brand-full {
