@@ -89,6 +89,30 @@
         </div>
       </div>
 
+      <div class="carousel-item">
+        <picture>
+          <source media="(max-width: 767px)" srcset="images/GilgameshHero-mobile.jpg">
+          <img src="images/GilgameshHero.jpg" class="carousel-img" alt="...">
+        </picture>
+        <div class="review-caption">
+          <h3><i>Gilgamesh</i> — Opera Australia / Sydney Chamber Opera, 2024</h3>
+          <p>“Kleeman as Gilgamesh dominates the opera, creating a powerful, multi-dimensional character. He possesses a beautifully smooth baritone voice, rich in colour, wide in range, with an expressive and limpid vocal line.”</p>
+          <p class="reviewer">— Michael Haliwell, <em>Australian Book Review</em></p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <picture>
+          <source media="(max-width: 767px)" srcset="images/NZSO.jpeg">
+          <img src="images/NZSO.jpeg" class="carousel-img" alt="...">
+        </picture>
+        <div class="review-caption">
+          <h3><i>Stabat Mater</i> — New Zealand Symphony Orchestra, 2025</h3>
+          <p>“The best of the four soloists was Jeremy Kleeman, billed as a baritone but amply covering the bass range down to the lowest notes with ease and resonance, his aria making a great impact.”</p>
+          <p class="reviewer">— Simon Holden, <em>bachtrack</em></p>
+        </div>
+      </div>
+
       <!-- SLIDE 2 -->
       <div class="carousel-item">
         <picture>
@@ -115,17 +139,7 @@
         </div>
       </div>
 
-      <div class="carousel-item">
-        <picture>
-          <source media="(max-width: 767px)" srcset="images/GilgameshHero-mobile.jpg">
-          <img src="images/GilgameshHero.jpg" class="carousel-img" alt="...">
-        </picture>
-        <div class="review-caption">
-          <h3><i>Gilgamesh</i> — Opera Australia / Sydney Chamber Opera, 2024</h3>
-          <p>“Kleeman as Gilgamesh dominates the opera, creating a powerful, multi-dimensional character. He possesses a beautifully smooth baritone voice, rich in colour, wide in range, with an expressive and limpid vocal line.”</p>
-          <p class="reviewer">— Michael Haliwell, <em>Australian Book Review</em></p>
-        </div>
-      </div>
+      
 
       <!-- ADD NEW SLIDES HERE — ANY ORDER, NO DOTS -->
       <!-- Example:
@@ -210,56 +224,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-<!-- RANDOMIZE + AUTO-DOTS + MOBILE SYNC -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.getElementById('reviewCarousel');
-    const inner = carousel.querySelector('.carousel-inner');
-    const indicators = carousel.querySelector('.carousel-indicators');
-    const items = Array.from(inner.children);
-    const mobileReview = document.getElementById('mobileReview');
-
-    // === RANDOMIZE ORDER ===
-    items.sort(() => Math.random() - 0.5);
-
-    // === REBUILD SLIDES ===
-    inner.innerHTML = '';
-    items.forEach((item, index) => {
-      if (index === 0) item.classList.add('active');
-      else item.classList.remove('active');
-      inner.appendChild(item);
-    });
-
-    // === AUTO-GENERATE DOTS ===
-    indicators.innerHTML = '';
-    items.forEach((_, index) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.dataset.bsTarget = '#reviewCarousel';
-      btn.dataset.bsSlideTo = index;
-      btn.setAttribute('aria-label', `Slide ${index + 1}`);
-      if (index === 0) btn.classList.add('active');
-      indicators.appendChild(btn);
-    });
-
-    // === UPDATE MOBILE TEXT ===
-    function updateMobileReview() {
-      const active = carousel.querySelector('.carousel-item.active');
-      const title = active.querySelector('h3').innerHTML;
-      const quote = active.querySelector('p:not(.reviewer)').innerHTML;
-      const reviewer = active.querySelector('.reviewer').innerHTML;
-      mobileReview.innerHTML = `
-        <p class="minititle mb-2">${title}</p>
-        <p class="mb-2">${quote}</p>
-        <p class="reviewer text-muted small">${reviewer}</p>
-        <hr class="my-4 opacity-25">
-      `;
-    }
-
-    updateMobileReview();
-    carousel.addEventListener('slid.bs.carousel', updateMobileReview);
-  });
-</script>
 
 <!-- ==================== FOOTER PLACEHOLDER ==================== -->
 <div id="footer-placeholder"></div>
