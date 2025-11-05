@@ -159,6 +159,12 @@
   </div>
 </div>
 
+  <!-- MOBILE REVIEW TEXT (AUTO-SYNCED) -->
+<div class="container d-md-none mt-4 px-4">
+  <div id="mobileReview" class="text-center phonetext"></div>
+</div>
+
+
 
 <!-- ==================== UPCOMING PERFORMANCES WIDGET ==================== -->
 <section id="upcoming-widget" class="container my-5">
@@ -209,7 +215,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
+<script>
+  // Sync the active review caption to mobile view
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.getElementById('reviewCarousel');
+    const mobileReview = document.getElementById('mobileReview');
 
+    function updateMobileReview() {
+      const active = carousel.querySelector('.carousel-item.active');
+      if (!active) return;
+      const title = active.querySelector('h3').innerHTML;
+      const quote = active.querySelector('p:not(.reviewer)').innerHTML;
+      const reviewer = active.querySelector('.reviewer').innerHTML;
+      mobileReview.innerHTML = `
+        <p class="minititle mb-2">${title}</p>
+        <p class="mb-2">${quote}</p>
+        <p class="reviewer text-muted small">${reviewer}</p>
+        <hr class="my-4 opacity-25">
+      `;
+    }
+
+    // Initialise and keep in sync when slides change
+    updateMobileReview();
+    carousel.addEventListener('slid.bs.carousel', updateMobileReview);
+  });
+</script>
+
+  
 <!-- ==================== FOOTER PLACEHOLDER ==================== -->
 <div id="footer-placeholder"></div>
 
