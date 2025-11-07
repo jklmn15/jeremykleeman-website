@@ -1279,6 +1279,20 @@ body {
   text-shadow: 0 0 8px rgba(74,144,226,0.4);
 }
 
+/* FIX NAVBAR BREAKING ON DESKTOP */
+@media (min-width: 768px) {
+  .navbar-collapse {
+    position: static !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    background: none !important;
+    z-index: auto !important;
+    max-height: none !important;
+  }
+}
+
+
 .site-footer p {
   color: #a0a8c0;
   font-size: 0.95rem;
