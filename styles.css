@@ -536,35 +536,46 @@ body {
 }
 
 /* ============================================================= */
-/* =================== NAVBAR — CLEAN & EPIC =================== */
+/* =================== NAVBAR — CLEAN & STABLE ================= */
 /* ============================================================= */
+
+/* Base navbar */
+.navbar {
+  background-color: #01021c !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  z-index: 1000;
+}
 
 /* Brand container */
 .navbar-brand {
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
   margin-right: 0;
-  line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Full name — white + blue glow + pulse on load */
+/* Brand text */
 .brand-full {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
   font-size: 7.5vw;
   color: #ffffff;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+
   text-shadow: 
     0 0 8px rgba(74, 144, 226, 0.6),
     0 0 16px rgba(74, 144, 226, 0.4),
     0 0 24px rgba(74, 144, 226, 0.2);
-  letter-spacing: 1.2px;
+
   animation: pulseGlow 2s ease-in-out;
-  white-space: nowrap;
 }
 
-/* Pulse animation on load */
+/* Pulse animation */
 @keyframes pulseGlow {
   0%, 100% {
     text-shadow: 
@@ -574,121 +585,155 @@ body {
   }
   50% {
     text-shadow: 
-      0 0 12px rgba(74, 144, 226, 0.8),
-      0 0 24px rgba(74, 144, 226, 0.6),
-      0 0 36px rgba(74, 144, 226, 0.4),
-      0 0 48px rgba(74, 144, 226, 0.2);
+      0 0 14px rgba(74, 144, 226, 0.9),
+      0 0 28px rgba(74, 144, 226, 0.7),
+      0 0 40px rgba(74, 144, 226, 0.5);
   }
 }
 
-/* MOBILE: HUGE & CENTERED */
+/* ============================================================= */
+/* ======================= MOBILE NAVBAR ======================== */
+/* ============================================================= */
+
 @media (max-width: 767px) {
+
+  /* Brand centered */
   .navbar-brand {
     flex-grow: 1;
     justify-content: center;
   }
+
   .brand-full {
     font-size: 8vw;
   }
+
+  /* Toggler */
   .navbar-toggler {
     position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
   }
+
+  /* Mobile menu dropdown */
   .navbar-collapse {
-    margin-top: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(1, 2, 28, 0.85);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0 0 16px 16px;
+
+    max-height: 85vh;
+    overflow-y: auto;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+
+    transition:
+      opacity 0.25s ease-out,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
+
+  /* When open */
+  .navbar-collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Mobile nav links */
   .navbar-nav .nav-link {
     font-size: 6vw;
     padding: 0.75rem 0;
     text-align: center;
+    color: #e6e8f0 !important;
+
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .navbar-collapse.show .nav-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .navbar-collapse.show .nav-link:nth-child(1) { transition-delay: .04s; }
+  .navbar-collapse.show .nav-link:nth-child(2) { transition-delay: .08s; }
+  .navbar-collapse.show .nav-link:nth-child(3) { transition-delay: .12s; }
+  .navbar-collapse.show .nav-link:nth-child(4) { transition-delay: .16s; }
+  .navbar-collapse.show .nav-link:nth-child(5) { transition-delay: .20s; }
+
+  /* Dim overlay behind dropdown */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .35s ease;
+    z-index: 900;
+  }
+
+  .navbar-collapse.show ~ .nav-overlay {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
-/* ====== Ultra-smooth frosted dropdown animation ====== */
-.navbar-collapse {
-  background: rgba(1, 2, 28, 0.7) !important;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: auto !important;
-  max-height: 90vh;
-  overflow-y: auto;
-  z-index: 9999;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  border-radius: 0 0 16px 16px;
+/* ============================================================= */
+/* ====================== DESKTOP NAVBAR ======================== */
+/* ============================================================= */
 
-  /* animation start state */
-  opacity: 0;
-  transform: translateY(-8px) scale(0.98);
-  transform-origin: top center;
-  pointer-events: none;
-  transition:
-    opacity 0.25s ease-out,
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* when expanded */
-.navbar-collapse.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-/* cascading fade for links */
-.navbar-nav .nav-link {
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-.navbar-collapse.show .nav-link {
-  opacity: 1;
-  transform: translateY(0);
-}
-.navbar-collapse.show .nav-link:nth-child(1) { transition-delay: 0.03s; }
-.navbar-collapse.show .nav-link:nth-child(2) { transition-delay: 0.06s; }
-.navbar-collapse.show .nav-link:nth-child(3) { transition-delay: 0.09s; }
-.navbar-collapse.show .nav-link:nth-child(4) { transition-delay: 0.12s; }
-.navbar-collapse.show .nav-link:nth-child(5) { transition-delay: 0.15s; }
-
-/* ===== Dimmed overlay behind dropdown ===== */
-.nav-overlay {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* adjustable dim strength */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s ease;
-  z-index: 9998; /* just below the dropdown */
-}
-
-/* when dropdown is open */
-.navbar-collapse.show ~ .nav-overlay {
-  opacity: 1;
-  visibility: visible;
-}
-
-
-
-
-/* TABLET & DESKTOP: BIGGER, HOVER GLOW */
 @media (min-width: 768px) {
-  .brand-full {
-    font-size: 3.2rem;
-    transition: text-shadow 0.4s ease;
+
+  /* Restore Bootstrap behaviour */
+  .navbar-collapse {
+    position: static !important;
+    background: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    height: auto !important;
+    max-height: none !important;
   }
+
+  .navbar-nav .nav-link {
+    font-size: 1.35rem;
+    padding: 0 1rem;
+    color: #e6e8f0 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #4a90e2 !important;
+    text-shadow: 0 0 10px rgba(74,144,226,0.4);
+  }
+
+  /* Brand size */
+  .brand-full {
+    font-size: 3rem;
+    transition: text-shadow .3s ease;
+  }
+
   .navbar-brand:hover .brand-full {
-    text-shadow: 
+    text-shadow:
       0 0 12px rgba(74, 144, 226, 0.9),
       0 0 24px rgba(74, 144, 226, 0.7),
-      0 0 36px rgba(74, 144, 226, 0.5),
-      0 0 48px rgba(74, 144, 226, 0.3);
+      0 0 36px rgba(74, 144, 226, 0.5);
+  }
+
+  /* Hide mobile overlay on desktop */
+  .nav-overlay {
+    display: none !important;
   }
 }
 
@@ -1278,20 +1323,6 @@ body {
   color: #7ab8ff;
   text-shadow: 0 0 8px rgba(74,144,226,0.4);
 }
-
-/* FIX NAVBAR BREAKING ON DESKTOP */
-@media (min-width: 768px) {
-  .navbar-collapse {
-    position: static !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transform: none !important;
-    background: none !important;
-    z-index: auto !important;
-    max-height: none !important;
-  }
-}
-
 
 .site-footer p {
   color: #a0a8c0;
