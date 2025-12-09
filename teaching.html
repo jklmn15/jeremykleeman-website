@@ -195,8 +195,6 @@
 
         <form action="https://formspree.io/f/movplpan" method="POST" class="contact-form">
           <input type="hidden" name="_subject" value="New Teaching Inquiry" />
-          <input type="hidden" name="_next" value="https://www.jeremykleeman.com/thank-you.html">
-
           <div class="row">
             <div class="col-md-6 mb-4">
               <input type="text" name="name" class="form-control form-control-lg" placeholder="Name" required>
@@ -221,7 +219,7 @@
             <textarea name="message" class="form-control form-control-lg" rows="5" placeholder="Tell me about your singing background and what you'd like to work on..." required></textarea>
           </div>
           <div class="text-end">
-            <button type="submit" class="btn btn-primary btn-lg px-5">Request Consultation</button>
+            <button type="submit" class="btn btn-primary btn-lg px-5" onclick="fbq('track', 'Lead');">Request Consultation</button>
           </div>
         </form>
       </section>
