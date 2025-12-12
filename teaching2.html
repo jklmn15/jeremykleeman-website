@@ -21,49 +21,56 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   
   <style>
-    /* ENGAGEMENT OVERRIDES */
+    /* --- TYPOGRAPHY & READABILITY --- */
     
-    /* Make body text larger for better readability (scanning) */
+    /* Make body text larger for better readability */
     p, li {
         font-size: 1.15rem; 
         line-height: 1.7;
     }
     
-    /* Make the Hero Section punchier */
+    /* --- HERO SECTION --- */
     .page-hero {
-        padding: 4rem 0;
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)); /* Darkens bg for text pop */
+        padding: 5rem 0; /* More breathing room */
+        background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)); /* Dark background */
     }
     
     .hero-title {
-        font-size: 3.5rem; /* Much bigger title */
+        font-size: 3.5rem; 
         font-family: 'Bebas Neue', sans-serif;
         letter-spacing: 2px;
+        /* CRISP SHADOW (Fixes the fuzzy glow issue) */
+        text-shadow: 0px 2px 4px rgba(0,0,0,1); 
     }
 
-    /* A dedicated CTA button in the hero */
+    /* --- GOLD ACCENTS (Replaces the "Cheap Blue") --- */
+    .text-gold {
+        color: #d4af37 !important;
+    }
+
     .btn-hero {
-        background-color: #d4af37; /* Gold-ish accent */
+        background-color: #d4af37; 
         color: #000;
         font-weight: bold;
-        padding: 15px 30px;
+        padding: 15px 35px;
         font-family: 'Bebas Neue', sans-serif;
         letter-spacing: 1px;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         border: none;
-        transition: transform 0.2s;
+        transition: all 0.2s ease-in-out;
     }
     .btn-hero:hover {
         background-color: #f1c40f;
         transform: scale(1.05);
         color: #000;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
     }
 
-    /* Highlight the Consultation Offer */
+    /* --- OFFER CARD --- */
     .offer-card {
-        border: 2px solid #d4af37; /* Gold border to draw eye */
+        border: 2px solid #d4af37; 
         background: rgba(212, 175, 55, 0.05);
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+        box-shadow: 0 0 30px rgba(0,0,0,0.5); /* Stronger shadow for depth */
     }
     
     .price-tag {
@@ -73,14 +80,21 @@
         font-family: 'Bebas Neue', sans-serif;
     }
 
-    /* Make the bio quote stand out */
+    /* --- BIO STYLING --- */
+    /* Keeps the Blue Line as requested */
     .bio-intro {
         font-size: 1.6rem;
         font-style: italic;
         color: #fff;
-        border-left: 4px solid #d4af37;
+        border-left: 4px solid #0d6efd; /* Bootstrap Blue */
         padding-left: 20px;
         margin-bottom: 30px;
+    }
+
+    /* --- TESTIMONIALS --- */
+    .representation-card blockquote {
+        font-size: 1.25rem; /* Larger font size */
+        line-height: 1.6;
     }
   </style>
 
@@ -129,7 +143,7 @@
     <h1 class="hero-title text-white mb-2">Uncover Your Resonant Voice</h1>
     <p class="lead text-white opacity-75 mb-4" style="font-size: 1.5rem;">Professional Singing Tuition in Brunswick & Northcote</p>
     
-    <a href="#consultation-offer" class="btn btn-hero rounded-pill shadow-lg mt-2">
+    <a href="#consultation-offer" class="btn btn-hero rounded-pill shadow-lg mt-3">
       <i class="bi bi-calendar-check me-2"></i> Book Consultation
     </a>
   </div>
@@ -166,34 +180,34 @@
         <div class="row g-4 mt-3">
            
           <div class="col-12">
-            <h5 class="text-primary mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
+            <h5 class="text-gold mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
               <i class="bi bi-lungs-fill me-2"></i>Vocal Health & Mechanics
             </h5>
             <ul class="list-unstyled text-light opacity-90 ms-4 mb-0">
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Improve breathing mechanics & alignment</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Expand range and stamina</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Uncover your natural resonance</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Improve breathing mechanics & alignment</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Expand range and stamina</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Uncover your natural resonance</li>
             </ul>
           </div>
 
           <div class="col-12">
-            <h5 class="text-primary mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
+            <h5 class="text-gold mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
               <i class="bi bi-music-note-beamed me-2"></i>Artistry & Repertoire
             </h5>
             <ul class="list-unstyled text-light opacity-90 ms-4 mb-0">
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Explore Classical, Musical Theatre, or Choral rep</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Refine diction (It, Ger, Fr, Eng)</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Connect emotionally to the text</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Explore Classical, Musical Theatre, or Choral rep</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Refine diction (It, Ger, Fr, Eng)</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Connect emotionally to the text</li>
             </ul>
           </div>
 
           <div class="col-12">
-            <h5 class="text-primary mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
+            <h5 class="text-gold mb-2" style="font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; font-size: 1.5rem;">
               <i class="bi bi-trophy-fill me-2"></i>Goals & Development
             </h5>
             <ul class="list-unstyled text-light opacity-90 ms-4 mb-0">
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Preparation for auditions & milestones</li>
-              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-primary"></i>Confidence building & mindset</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Preparation for auditions & milestones</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill me-2 text-gold"></i>Confidence building & mindset</li>
             </ul>
           </div>
 
@@ -206,8 +220,8 @@
     
     <div class="col">
       <div class="representation-card h-100 p-4 d-flex flex-column justify-content-center text-center">
-        <blockquote class="mb-3 fst-italic text-light" style="font-size: 1.1rem;">
-          "Jeremy is an excellent teacher. He quickly identified what was holding back my voice. Every week is a new discovery, and I feel I have made genuine progress."
+        <blockquote class="mb-3 fst-italic text-light">
+          "Jeremy is an excellent teacher. He quickly identified what was holding back my voice and helped me release tension to sing with a more open, relaxed sound. Every week is a new discovery, and I feel I have made genuine progress."
         </blockquote>
         <footer class="text-primary">— William, <span class="text-muted opacity-75">Songwriter</span></footer>
       </div>
@@ -215,8 +229,8 @@
 
     <div class="col">
       <div class="representation-card h-100 p-4 d-flex flex-column justify-content-center text-center">
-        <blockquote class="mb-3 fst-italic text-light" style="font-size: 1.1rem;">
-          "Jeremy generously shares his professional expertise to help with stage presence and combating nerves. He is a delightful teacher who makes every lesson fun and constructive."
+        <blockquote class="mb-3 fst-italic text-light">
+          "Through working together, I developed from a choir member to singing solo in an operetta. Jeremy generously shares his professional expertise to help with stage presence and combating nerves. He is a delightful teacher who makes every lesson fun and constructive."
         </blockquote>
         <footer class="text-primary">— Mary-Jane, <span class="text-muted opacity-75">Chorister to Soloist</span></footer>
       </div>
@@ -247,6 +261,7 @@
         
         <div class="row text-light align-items-center justify-content-center">
           <div class="col-md-5 mb-3 mb-md-0">
+             <div class="text-white-50 text-decoration-line-through small" style="font-size: 1rem;">Standard: $95</div>
              <span class="price-tag">$50</span>
              <div class="text-muted small text-uppercase letter-spacing-1">Session Fee</div>
           </div>
@@ -255,9 +270,12 @@
           
           <div class="col-md-5 text-start ps-md-4">
              <ul class="list-unstyled mb-0 text-start" style="font-size: 1rem;">
-                 <li><i class="bi bi-geo-alt-fill text-primary me-2"></i> Brunswick or Northcote</li>
-                 <li><i class="bi bi-clock-fill text-primary me-2"></i> 60 Minutes</li>
-                 <li><i class="bi bi-music-note-list text-primary me-2"></i> Vocal Assessment</li>
+                 <li class="mb-2"><i class="bi bi-geo-alt-fill text-gold me-2"></i> Brunswick or Northcote</li>
+                 <li class="mb-2"><i class="bi bi-clock-fill text-gold me-2"></i> 60 Minutes</li>
+                 
+                 <li class="mt-3 pt-3 border-top border-secondary text-white-50 small">
+                    <i class="bi bi-info-circle me-2"></i> Standard Lesson Rate: $95/hr
+                 </li>
              </ul>
           </div>
         </div>
