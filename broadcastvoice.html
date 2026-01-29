@@ -83,6 +83,32 @@
         text-shadow: 0px 2px 4px rgba(0,0,0,1); 
     }
 
+    /* --- CREDENTIALS BADGES --- */
+    .credentials-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 25px;
+    }
+    
+    .credential-badge {
+        background: rgba(212, 175, 55, 0.15);
+        border: 1px solid var(--gold-color);
+        padding: 8px 18px;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        color: var(--gold-color);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+    
+    .credential-badge i {
+        margin-right: 6px;
+        font-size: 1.1rem;
+    }
+
     /* --- BIO SECTION --- */
     .bio-intro {
         font-size: 1.6rem;
@@ -99,6 +125,33 @@
         font-family: 'Bebas Neue', sans-serif;
         letter-spacing: 1px;
         font-size: 1.5rem;
+    }
+
+    /* Credentials box in bio */
+    .credentials-box {
+        background: rgba(212, 175, 55, 0.08);
+        border-left: 3px solid var(--gold-color);
+        padding: 20px;
+        margin-top: 25px;
+        border-radius: 8px;
+    }
+    
+    .credentials-box h5 {
+        color: var(--gold-color);
+        font-family: 'Bebas Neue', sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .credentials-box ul {
+        margin-bottom: 0;
+    }
+    
+    .credentials-box li {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+        color: rgba(255,255,255,0.9);
     }
 
     /* --- OFFER/PACKAGE CARD --- */
@@ -184,7 +237,20 @@
         Hold your listener's attention. Speak with natural authority. Never run out of air.
     </p>
     
-    <a href="#package-offer" class="btn btn-hero rounded-pill shadow-lg mt-3">
+    <!-- Credentials badges in hero -->
+    <div class="credentials-section">
+      <span class="credential-badge">
+        <i class="bi bi-broadcast"></i>ABC Classic Presenter
+      </span>
+      <span class="credential-badge">
+        <i class="bi bi-music-note-beamed"></i>Trained Opera Singer
+      </span>
+      <span class="credential-badge">
+        <i class="bi bi-mortarboard"></i>Professional Vocal Coach
+      </span>
+    </div>
+    
+    <a href="#package-offer" class="btn btn-hero rounded-pill shadow-lg mt-4">
       <i class="bi bi-mic-fill me-2"></i> View The Package
     </a>
   </div>
@@ -205,8 +271,19 @@
         </p>
         
         <p class="mb-4 text-light">
-          Most podcasters focus on microphones, but ignore the source signal. My specialized coaching helps you express yourself with more range and makes the physical sensation of talking enjoyable and natural.
+          Most podcasters focus on microphones, but ignore the source signal. My specialised coaching helps you express yourself with more range and makes the physical sensation of talking enjoyable and natural.
         </p>
+
+        <!-- Enhanced credentials box -->
+        <div class="credentials-box">
+          <h5><i class="bi bi-award-fill me-2"></i>Broadcasting & Performance Background</h5>
+          <ul class="list-unstyled ms-3">
+            <li><i class="bi bi-chevron-right text-gold me-2"></i><strong>ABC Classic Presenter</strong> – Host on Australia's national classical music network</li>
+            <li><i class="bi bi-chevron-right text-gold me-2"></i><strong>Trained Opera Singer</strong> – Professional vocal technique from stage to studio</li>
+            <li><i class="bi bi-chevron-right text-gold me-2"></i><strong>Diverse Format Experience</strong> – Previous host of science and theatre programmes on SYN FM</li>
+            <li><i class="bi bi-chevron-right text-gold me-2"></i><strong>10+ Years</strong> teaching broadcast voice technique</li>
+          </ul>
+        </div>
 
         <div class="row g-4 mt-4">
            
@@ -230,13 +307,16 @@
             </ul>
           </div>
 
-        </div> </div> </div> </div>
+        </div> 
+      </div> 
+    </div> 
+  </div>
    
   <div class="section-divider my-5" style="border-color: rgba(212, 175, 55, 0.2);"></div>
   
   <div id="package-offer"></div> 
   
-  <h2 class="section-heading mb-4 text-center" style="font-size: 3rem; color: #fff;">The Optimization Package</h2>
+  <h2 class="section-heading mb-4 text-center" style="font-size: 3rem; color: #fff;">The Optimisation Package</h2>
   <br>
   <div class="row justify-content-center mb-5">
     <div class="col-md-10 col-lg-8">
@@ -278,7 +358,7 @@
              <div class="d-grid gap-2">
                  <a href="#contact-form" class="btn btn-primary btn-lg shadow-sm">Book Diagnostic Session ($165)</a>
                  <p class="text-muted small text-center mt-2" style="line-height: 1.2; color: rgba(255,255,255,0.6) !important;">
-                    *Book the first session individually. Fee is credited toward the total package.
+                    *Book the first session individually. Fee is credited towards the total package.
                  </p>
              </div>
           </div>
