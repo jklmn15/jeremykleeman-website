@@ -555,8 +555,21 @@ body {
   margin-right: 0;
   line-height: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
+}
+
+/* Subtitle — Bass Baritone */
+.brand-subtitle {
+  font-family: 'PT Serif', serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 1px;
+  white-space: nowrap;
 }
 
 /* Full name — white + blue glow + pulse on load */
@@ -595,10 +608,15 @@ body {
 @media (max-width: 767px) {
   .navbar-brand {
     flex-grow: 1;
+    align-items: center;
     justify-content: center;
   }
   .brand-full {
     font-size: 8vw;
+  }
+  .brand-subtitle {
+    font-size: 0.6rem;
+    letter-spacing: 2.5px;
   }
   .navbar-toggler {
     position: absolute;
@@ -1271,4 +1289,17 @@ body {
 .site-footer p {
   color: #a0a8c0;
   font-size: 0.95rem;
+}
+
+.footer-teaching-link {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.footer-teaching-link:hover {
+  color: #7ab8ff;
+  text-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
 }
