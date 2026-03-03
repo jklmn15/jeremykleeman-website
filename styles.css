@@ -135,7 +135,7 @@ body {
   .navbar-nav { float: right; }
 
   .navbar-nav .nav-link {
-    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
   }
 
   .sitetext {
@@ -563,7 +563,7 @@ body {
 /* Subtitle — Bass Baritone */
 .brand-subtitle {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
   color: var(--accent-blue);
   letter-spacing: 2px;
   margin-top: -4px;
