@@ -134,8 +134,8 @@ body {
   .phonetext { display: none; }
   .navbar-nav { float: right; }
 
-  .navbar-nav .nav-link { 
-    font-size: 3vw; 
+  .navbar-nav .nav-link {
+    font-size: clamp(0.85rem, 1.3vw, 1.05rem);
   }
 
   .sitetext {
@@ -562,13 +562,11 @@ body {
 
 /* Subtitle — Bass Baritone */
 .brand-subtitle {
-  font-family: 'PT Serif', serif;
-  font-style: italic;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-top: 1px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  color: var(--accent-blue);
+  letter-spacing: 2px;
+  margin-top: -2px;
   white-space: nowrap;
 }
 
@@ -615,8 +613,8 @@ body {
     font-size: 8vw;
   }
   .brand-subtitle {
-    font-size: 0.6rem;
-    letter-spacing: 2.5px;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
   }
   .navbar-toggler {
     position: absolute;
