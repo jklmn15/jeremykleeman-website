@@ -2,10 +2,25 @@
 /* ===================== GLOBAL & BASE ========================= */
 /* ============================================================= */
 
+:root {
+  --accent-blue: #4B8FE2;
+  --accent-blue-hover: #3F79C0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 body {
   background-color: #01021c;
   color: white;
   font-family: "PT Serif", serif;
+  animation: pageFadeIn 0.35s ease-in;
 }
 
 /* Navbar base */
@@ -136,8 +151,8 @@ body {
     padding-left: 1.5vw;
   }
 
-  .bioimage { 
-    width: 250vw; 
+  .bioimage {
+    width: 25vw;
   }
 
   .headertext {
@@ -189,6 +204,7 @@ body {
   cursor:pointer;
   position:relative;
   overflow:hidden;
+  will-change: transform, opacity;
 }
 
 .highlight-item:hover {
@@ -230,12 +246,6 @@ body {
   opacity:1;
 }
 
-.highlight-item {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  overflow: hidden;  /* prevents layout reflows during animation */
-  will-change: transform, opacity;  /* gives GPU hint to Chrome */
-}
 .highlight-item.open {
   background-color: rgba(255,255,255,0.05);
 }
@@ -536,7 +546,7 @@ body {
 }
 
 /* ============================================================= */
-/* =================== NAVBAR â€” CLEAN & EPIC =================== */
+/* =================== NAVBAR — CLEAN & EPIC =================== */
 /* ============================================================= */
 
 /* Brand container */
@@ -549,7 +559,7 @@ body {
   justify-content: center;
 }
 
-/* Full name â€” white + blue glow + pulse on load */
+/* Full name — white + blue glow + pulse on load */
 .brand-full {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -668,7 +678,7 @@ body {
 }
 
 /* when dropdown is open */
-.navbar-collapse.show ~ .nav-overlay {
+.nav-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -693,7 +703,7 @@ body {
 
 
 /* ============================================================= */
-/* ====================== BIOGRAPHY PAGE â€” FIXED ============== */
+/* ====================== BIOGRAPHY PAGE — FIXED ============== */
 /* ============================================================= */
 
 /* ============================================================= */
@@ -732,7 +742,7 @@ body {
 @media (min-width: 768px) {
   .bio-grid {
     grid-template-columns: 1fr 2fr; /* Headshot | Text */
-    align-items: start; /* â† NOW IT WORKS */
+    align-items: start; /* ← NOW IT WORKS */
     gap: 3rem;
   }
 }
@@ -982,7 +992,7 @@ body {
   text-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-/* Title â€” matches Media hero exactly */
+/* Title — matches Media hero exactly */
 .page-section-title {
   font-family: "Bebas Neue", sans-serif;
   color: #e6e8f0;
@@ -998,7 +1008,7 @@ body {
 }
 
 
-/* Subtitle â€” matches typography tone under Media hero */
+/* Subtitle — matches typography tone under Media hero */
 .page-hero p.lead {
   font-family: "PT Serif", serif;
   color: #c8d0e0;
@@ -1116,6 +1126,8 @@ body {
   display: block;
   border-radius: 12px;
   transition: transform 0.5s ease, filter 0.4s ease;
+  transform-origin: center center;
+  image-rendering: auto;
 }
 
 .mosaic-item:hover img {
@@ -1137,18 +1149,6 @@ body {
   font-style: italic;
   border: 1px solid rgba(74,144,226,0.2);
   border-radius: 12px;
-}
-
-.review-tile blockquote {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.6;
-}
-.review-tile footer {
-  margin-top: 0.8rem;
-  font-size: 0.9rem;
-  font-style: normal;
-  color: #4a90e2;
 }
 
 /* Give some items more visual rhythm */
@@ -1174,7 +1174,7 @@ body {
 /* ============================================================= */
 
 /* ============================================================= */
-/* ========== DEFAULT TILE SIZE â€” CONSISTENT SQUARES =========== */
+/* ========== DEFAULT TILE SIZE — CONSISTENT SQUARES =========== */
 /* ============================================================= */
 
 .mosaic-item:not(.portrait):not(.landscape):not(.large):not(.review-tile) {
@@ -1210,12 +1210,6 @@ body {
   object-position: center 60%;
 }
 
-.mosaic-item img {
-  ...
-  transform-origin: center center;
-  image-rendering: auto;
-}
-
 
 
 /* Responsive tweaks */
@@ -1227,10 +1221,6 @@ body {
   .review-tile blockquote {
     font-size: 0.9rem;
   }
-}
-
-/* mobile override â€“ everything stacks neatly */
-@media (max-width: 768px) {
   .mosaic-item.portrait,
   .mosaic-item.landscape,
   .mosaic-item.large {
