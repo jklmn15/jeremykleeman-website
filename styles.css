@@ -353,6 +353,25 @@ body {
   color: #c8d0e0;
   margin: 0 0 .25rem;
 }
+.perf-venue {
+  font-size: 0.95rem;
+  color: #c8d0e0;
+  margin-bottom: 0.75rem;
+}
+.perf-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+.perf-date-pill {
+  font-size: 0.975rem;
+  padding: 0.3rem 0.875rem;
+  border-radius: 999px;
+  border: 1px solid rgba(74, 144, 226, 0.35);
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
 .venue-date .card-date {
   font-size: 1.1rem;
   font-weight: 600;
