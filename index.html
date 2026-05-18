@@ -105,16 +105,42 @@
       <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
       <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
       <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+      <button type="button" data-bs-target="#reviewCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
     </div>
 
     <!-- SLIDES -->
     <div class="carousel-inner">
 
       <!-- SLIDE 1 -->
-            <div class="carousel-item active">
+      <div class="carousel-item active">
+        <picture>
+          <img src="images/MessaBass.jpg" class="carousel-img" alt="Messa da Requiem — Queensland Ballet" loading="lazy" style="object-position: center 95%;">
+        </picture>
+        <div class="review-caption" style="bottom: auto; top: 2.5rem;">
+          <h3>Bass Soloist, <i>Messa da Requiem</i> — Queensland Ballet, 2026</h3>
+          <p>"Jeremy Kleeman's bass-baritone provides a deep, resonant foundation that anchors the sound."</p>
+          <p class="reviewer">— <em>Stage Buzz Brisbane</em></p>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="carousel-item">
+        <picture>
+          <img src="images/DandiniCombo.jpg" class="carousel-img" alt="La Cenerentola — Opera Queensland" loading="lazy">
+        </picture>
+        <div class="review-caption review-caption-top-lg" style="font-size: 0.78rem;">
+          <h3>Dandini, <i>La Cenerentola</i> — Opera Queensland, 2026</h3>
+          <p>"Jeremy Kleeman's Dandini is a triumph. He is outrageously funny, charismatic and precise, with brilliant comic timing and wonderfully clear diction. Vocally, he brings rich tones and impressive volume, while theatrically he has the rare ability to steal focus without damaging the balance of the production."</p>
+          <p class="reviewer">— Kitty Goodall, <em>Stage Whispers</em></p>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/NZSO-mobile.jpg">
-          <img src="images/NZSO.jpeg" class="carousel-img" alt="Stabat Mater — New Zealand Symphony Orchestra" loading="lazy">
+          <img src="images/NZSO.jpeg" class="carousel-img" alt="Stabat Mater — New Zealand Symphony Orchestra" loading="lazy" style="object-position: center 40%;">
         </picture>
         <div class="review-caption">
           <h3><i>Stabat Mater</i> — New Zealand Symphony Orchestra, 2025</h3>
@@ -123,50 +149,50 @@
         </div>
       </div>
 
-      <!-- SLIDE 2 -->
+      <!-- SLIDE 4 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/GilgameshHero-mobile.jpg">
           <img src="images/GilgameshHero.jpg" class="carousel-img" alt="Gilgamesh — Opera Australia / Sydney Chamber Opera" loading="lazy">
         </picture>
-        <div class="review-caption">
+        <div class="review-caption review-caption-top-right-lg" style="font-size: 0.78rem;">
           <h3><i>Gilgamesh</i> — Opera Australia / Sydney Chamber Opera, 2024</h3>
           <p>“Kleeman as Gilgamesh dominates the opera, creating a powerful, multi-dimensional character. He possesses a beautifully smooth baritone voice, rich in colour, wide in range, with an expressive and limpid vocal line.”</p>
           <p class="reviewer">— Michael Haliwell, <em>Australian Book Review</em></p>
         </div>
       </div>
 
-      <!-- SLIDE 3 -->
+      <!-- SLIDE 5 -->
             <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/CosiOQ-mobile.jpg">
           <img src="images/CosiOQ.jpg" class="carousel-img" alt="Così fan tutte — Opera Queensland" loading="lazy">
         </picture>
-        <div class="review-caption">
+        <div class="review-caption" style="left: 2rem; right: auto; transform: none;">
           <h3><i>Così fan tutte</i> — Opera Queensland, 2023</h3>
           <p>“Jeremy Kleeman as Guglielmo complements his golden voice with engaging acting throughout ... his self-congratulation was perfect”</p>
           <p class="reviewer">— Nicholas Routley, <em>Australian Stage</em></p>
         </div>
       </div>
       
-      <!-- SLIDE 4 -->
+      <!-- SLIDE 6 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/FigaroSOSA2.jpg">
-          <img src="images/FigaroSOSA2.jpg" class="carousel-img" alt="Le nozze di Figaro — State Opera SA" loading="lazy">
+          <img src="images/FigaroSOSA2.jpg" class="carousel-img" alt="Le nozze di Figaro — State Opera SA" loading="lazy" style="object-position: center 0%;">
         </picture>
-        <div class="review-caption">
+        <div class="review-caption" style="left: 2rem; right: auto; transform: none;">
           <h3><i>Le nozze di Figaro</i> — State Opera of South Australia, 2023</h3>
           <p>“Jeremy Kleeman is the perfect Figaro ... he brings youth and physical energy to the role. His baritone is velvety smooth”</p>
           <p class="reviewer">— Barry Hill OAM, <em>Stage Whispers</em></p>
         </div>
       </div>
 
-      <!-- SLIDE 5 -->
+      <!-- SLIDE 7 -->
       <div class="carousel-item">
         <picture>
           <source media="(max-width: 767px)" srcset="images/CorcoranSOSA.jpg">
-          <img src="images/CorcoranSOSA.jpg" class="carousel-img" alt="HMS Pinafore — State Opera SA" loading="lazy">
+          <img src="images/CorcoranSOSA.jpg" class="carousel-img" alt="HMS Pinafore — State Opera SA" loading="lazy" style="object-position: center 0%;">
         </picture>
         <div class="review-caption">
           <h3><i>HMS Pinafore</i> — State Opera of South Australia, 2023</h3>
@@ -271,6 +297,7 @@
     carousel.addEventListener('slid.bs.carousel', updateMobileReview);
   });
 </script>
+
 
   
 <!-- ==================== FOOTER PLACEHOLDER ==================== -->
