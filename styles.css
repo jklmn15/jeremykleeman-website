@@ -503,6 +503,9 @@ body {
   transform: translateX(-50%) translateY(-4px);
   box-shadow: 0 16px 45px rgba(0,0,0,0.3);
 }
+.carousel-item:hover .review-caption-top-right-lg {
+  transform: translateY(-4px);
+}
 
 /* Custom indicators */
 .custom-indicators {

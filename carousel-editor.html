@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carousel Editor (local tool — not part of the live site)</title>
+
+<!-- Real site assets, so the preview above is a carbon copy of the homepage -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="styles.css" rel="stylesheet">
+
+<style>
+  .editor-banner {
+    background: #4a2f0a;
+    color: #ffd48a;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 0.82rem;
+    padding: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .editor-wrap {
+    background: #14161f;
+    color: #e8e9ee;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    padding: 2rem;
+  }
+  .editor-wrap h1 { font-size: 1.3rem; margin: 0 0 0.4rem; }
+  .editor-wrap .intro {
+    color: #9aa0b0;
+    max-width: 70ch;
+    line-height: 1.5;
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+  }
+  .toolbar { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .editor-wrap button {
+    background: #2a2d3d;
+    color: #e8e9ee;
+    border: 1px solid #3f4359;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  .editor-wrap button:hover { background: #363a4f; }
+  .editor-wrap button.primary { background: #4a6fe2; border-color: #4a6fe2; }
+  .editor-wrap button.primary:hover { background: #5a7ef0; }
+
+  /* Draggable tiles use inline left/top/transform, so unset the class-based
+     default position rules from styles.css — the base .review-caption class
+     still supplies the box look (background, padding, blur etc). */
+  #liveCarousel .review-caption,
+  .grid .review-caption {
+    bottom: auto;
+    right: auto;
+  }
+  .review-caption {
+    cursor: grab;
+    touch-action: none;
+  }
+  .review-caption.dragging { cursor: grabbing; }
+
+  #liveCarousel { margin: 0 0 3rem; }
+  #liveCarousel .carousel-inner { border-radius: 20px; overflow: hidden; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2.5rem;
+  }
+  .slide-card {
+    background: #1c1f2b;
+    border: 1px solid #2a2d3d;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .slide-card.active-slide {
+    border-color: #4a6fe2;
+    box-shadow: 0 0 0 2px rgba(74,111,226,0.4);
+  }
+  .slide-label {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+    color: #9aa0b0;
+    border-bottom: 1px solid #2a2d3d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .slide-label button { font-size: 0.72rem; padding: 0.25rem 0.6rem; }
+  .preview {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background: #000;
+  }
+  .preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .preview .review-caption {
+    width: 62%;
+    max-width: 340px;
+    padding: 0.8rem 1rem;
+  }
+  .preview .review-caption h3 { font-size: 0.78rem; margin-bottom: 0.3rem; }
+  .preview .review-caption p { font-size: 0.62rem; margin-bottom: 0.25rem; }
+  .preview .review-caption .reviewer { font-size: 0.56rem; }
+
+  .controls {
+    padding: 1rem 1.1rem 1.2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1rem;
+  }
+  .control { display: flex; flex-direction: column; gap: 0.25rem; }
+  .control label { font-size: 0.72rem; color: #9aa0b0; display: flex; justify-content: space-between; }
+  .control input[type="range"] { width: 100%; }
+  .control-actions { grid-column: 1 / -1; display: flex; gap: 0.5rem; margin-top: 0.3rem; }
+  .control-actions button { flex: 1; font-size: 0.78rem; padding: 0.4rem 0.6rem; }
+
+  textarea#exportBox {
+    width: 100%;
+    height: 260px;
+    margin-top: 1rem;
+    background: #0f1118;
+    color: #cfe0ff;
+    border: 1px solid #2a2d3d;
+    border-radius: 10px;
+    padding: 1rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem;
+    display: none;
+    white-space: pre;
+  }
+</style>
+</head>
+<body>
+
+<div class="editor-banner">LOCAL EDITOR — this page is not linked from the live site. The section below the intro text is a live carbon copy of the homepage.</div>
+
+<!-- ==================== REAL NAVBAR (loaded exactly like the homepage) ==================== -->
+<div id="navbar-placeholder"></div>
+<script>
+  fetch('navbar.html')
+    .then(r => r.text())
+    .then(html => { document.getElementById('navbar-placeholder').innerHTML = html; });
+</script>
+
+<!-- ==================== LIVE CARBON-COPY CAROUSEL ==================== -->
+<div class="hero-carousel-container" id="liveCarousel">
+  <div id="reviewCarousel" class="carousel slide" data-bs-ride="false">
+    <div class="carousel-indicators custom-indicators" id="liveIndicators"></div>
+    <div class="carousel-inner" id="liveCarouselInner"></div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<!-- ==================== EDITOR CONTROLS ==================== -->
+<div class="editor-wrap">
+  <h1>Carousel Tile Editor</h1>
+  <p class="intro">
+    Drag any review tile — up top on the full-size carousel, or on the small preview in each card below —
+    to reposition it. Use the sliders to crop the photo (image focal point) and adjust each tile's opacity
+    and size. Everything above and below is wired to the same values, so a drag up top updates the matching
+    card below and vice versa. Changes autosave in this browser. When you're happy, hit "Export values" and
+    paste the result back to me in chat — I'll wire the final numbers into <code>index.html</code> /
+    <code>styles.css</code> on the real site.
+  </p>
+
+  <div class="toolbar">
+    <button class="primary" onclick="exportAll()">Export values</button>
+    <button onclick="resetAll()">Reset all to current site defaults</button>
+  </div>
+
+  <textarea id="exportBox" readonly></textarea>
+
+  <div class="grid" id="grid"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<script>
+const STORAGE_KEY = 'carousel-editor-state-v1';
+
+// Defaults approximate the current live site (index.html / styles.css) for each slide,
+// in the current carousel order.
+const SLIDES = [
+  {
+    id: 'cosi',
+    img: 'images/CosiOQ.jpg',
+    alt: 'Così fan tutte — Opera Queensland',
+    title: '<i>Così fan tutte</i> — Opera Queensland, 2023',
+    quote: '"Jeremy Kleeman as Guglielmo complements his golden voice with engaging acting throughout ... his self-congratulation was perfect"',
+    reviewer: '— Nicholas Routley, <em>Australian Stage</em>',
+    defaults: { cropX: 50, cropY: 20, left: 22, top: 84, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'nzso',
+    img: 'images/NZSO.jpeg',
+    alt: 'Stabat Mater — New Zealand Symphony Orchestra',
+    title: '<i>Stabat Mater</i> — New Zealand Symphony Orchestra, 2025',
+    quote: '"The best of the four soloists was Jeremy Kleeman, billed as a baritone but amply covering the bass range down to the lowest notes with ease and resonance, his aria making a great impact."',
+    reviewer: '— Simon Holden, <em>bachtrack</em>',
+    defaults: { cropX: 50, cropY: 40, left: 50, top: 86, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'poppea',
+    img: 'images/PoppeaOttoneAmore.jpg',
+    alt: 'The Coronation of Poppea — Victorian Opera',
+    title: 'Ottone, <i>The Coronation of Poppea</i> — Victorian Opera, 2026',
+    quote: '"Increasingly proving to be a powerfully gifted bass-baritone sporting a warm legato, Jeremy Kleeman is an immediate standout as the unfortunate, manipulated Ottone."',
+    reviewer: '— Paul Selar, <em>Australian Arts Review</em>',
+    defaults: { cropX: 50, cropY: 100, left: 50, top: 14, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'gilgamesh',
+    img: 'images/GilgameshHero.jpg',
+    alt: 'Gilgamesh — Opera Australia / Sydney Chamber Opera',
+    title: '<i>Gilgamesh</i> — Opera Australia / Sydney Chamber Opera, 2024',
+    quote: '"Kleeman as Gilgamesh dominates the opera, creating a powerful, multi-dimensional character. He possesses a beautifully smooth baritone voice, rich in colour, wide in range, with an expressive and limpid vocal line."',
+    reviewer: '— Michael Haliwell, <em>Australian Book Review</em>',
+    defaults: { cropX: 50, cropY: 20, left: 78, top: 14, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'cenerentola',
+    img: 'images/DandiniCombo.jpg',
+    alt: 'La Cenerentola — Opera Queensland',
+    title: 'Dandini, <i>La Cenerentola</i> — Opera Queensland, 2026',
+    quote: '"Jeremy Kleeman\'s Dandini is a triumph. He is outrageously funny, charismatic and precise, with brilliant comic timing and wonderfully clear diction."',
+    reviewer: '— Kitty Goodall, <em>Stage Whispers</em>',
+    defaults: { cropX: 50, cropY: 20, left: 50, top: 14, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'requiem',
+    img: 'images/MessaBass.jpg',
+    alt: 'Messa da Requiem — Queensland Ballet',
+    title: 'Bass Soloist, <i>Messa da Requiem</i> — Queensland Ballet, 2026',
+    quote: '"Jeremy Kleeman\'s bass-baritone provides a deep, resonant foundation that anchors the sound."',
+    reviewer: '— <em>Stage Buzz Brisbane</em>',
+    defaults: { cropX: 50, cropY: 95, left: 50, top: 14, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'figaro',
+    img: 'images/FigaroSOSA2.jpg',
+    alt: 'Le nozze di Figaro — State Opera SA',
+    title: '<i>Le nozze di Figaro</i> — State Opera of South Australia, 2023',
+    quote: '"Jeremy Kleeman is the perfect Figaro ... he brings youth and physical energy to the role. His baritone is velvety smooth"',
+    reviewer: '— Barry Hill OAM, <em>Stage Whispers</em>',
+    defaults: { cropX: 50, cropY: 0, left: 22, top: 86, opacity: 74, scale: 100 }
+  },
+  {
+    id: 'pinafore',
+    img: 'images/CorcoranSOSA.jpg',
+    alt: 'HMS Pinafore — State Opera SA',
+    title: '<i>HMS Pinafore</i> — State Opera of South Australia, 2023',
+    quote: '"Jeremy Kleeman\'s wit, energy and constant focus power his performance. He can act, he can move and he can sing."',
+    reviewer: '— Pat Wilson, <em>Glam Adelaide</em>',
+    defaults: { cropX: 50, cropY: 0, left: 50, top: 86, opacity: 74, scale: 100 }
+  },
+];
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (saved) return saved;
+  } catch (e) {}
+  const fresh = {};
+  SLIDES.forEach(s => fresh[s.id] = { ...s.defaults });
+  return fresh;
+}
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function resetAll() {
+  if (!confirm('Reset every slide back to the current live-site defaults?')) return;
+  SLIDES.forEach(s => state[s.id] = { ...s.defaults });
+  saveState();
+  SLIDES.forEach(s => applyStyle(s.id));
+  syncSlidersToState();
+}
+
+function resetSlide(id) {
+  const s = SLIDES.find(s => s.id === id);
+  state[id] = { ...s.defaults };
+  saveState();
+  applyStyle(id);
+  syncSlidersToState();
+}
+
+function syncSlidersToState() {
+  SLIDES.forEach(slide => {
+    const v = state[slide.id];
+    const card = document.getElementById('card-' + slide.id);
+    if (!card) return;
+    ['cropX', 'cropY', 'opacity', 'scale'].forEach(field => {
+      const input = card.querySelector(`input[data-field="${field}"]`);
+      const out = card.querySelector(`[data-out="${field}"]`);
+      if (input) input.value = v[field];
+      if (out) out.textContent = v[field] + '%';
+    });
+  });
+}
+
+function exportAll() {
+  const box = document.getElementById('exportBox');
+  const lines = SLIDES.map(s => {
+    const v = state[s.id];
+    return `${s.id}:\n` +
+      `  image object-position: ${v.cropX}% ${v.cropY}%\n` +
+      `  caption position (center point): left ${v.left}%, top ${v.top}%\n` +
+      `  caption opacity: ${v.opacity}%\n` +
+      `  caption size: ${v.scale}%\n`;
+  });
+  box.value = lines.join('\n');
+  box.style.display = 'block';
+  box.select();
+}
+
+// Applies current state for one slide to every matching element
+// (the live top carousel AND its card in the grid below).
+function applyStyle(id) {
+  const v = state[id];
+  document.querySelectorAll(`[data-slide-img="${id}"]`).forEach(img => {
+    img.style.objectPosition = `${v.cropX}% ${v.cropY}%`;
+  });
+  document.querySelectorAll(`[data-slide-caption="${id}"]`).forEach(tile => {
+    tile.style.left = v.left + '%';
+    tile.style.top = v.top + '%';
+    tile.style.transform = `translate(-50%, -50%) scale(${v.scale / 100})`;
+    tile.style.background = `rgba(255,255,255,${v.opacity / 100})`;
+  });
+}
+
+function captionMarkup(slide) {
+  return `
+    <h3>${slide.title}</h3>
+    <p>${slide.quote}</p>
+    <p class="reviewer">${slide.reviewer}</p>
+  `;
+}
+
+function buildLiveCarousel() {
+  const inner = document.getElementById('liveCarouselInner');
+  const indicators = document.getElementById('liveIndicators');
+  inner.innerHTML = '';
+  indicators.innerHTML = '';
+
+  SLIDES.forEach((slide, i) => {
+    const item = document.createElement('div');
+    item.className = 'carousel-item' + (i === 0 ? ' active' : '');
+
+    const picture = document.createElement('picture');
+    const img = document.createElement('img');
+    img.src = slide.img;
+    img.alt = slide.alt;
+    img.className = 'carousel-img';
+    img.loading = 'lazy';
+    img.dataset.slideImg = slide.id;
+    picture.appendChild(img);
+    item.appendChild(picture);
+
+    const caption = document.createElement('div');
+    caption.className = 'review-caption';
+    caption.dataset.slideCaption = slide.id;
+    caption.innerHTML = captionMarkup(slide);
+    makeDraggable(caption, item, slide.id);
+    item.appendChild(caption);
+
+    inner.appendChild(item);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.setAttribute('data-bs-target', '#reviewCarousel');
+    btn.setAttribute('data-bs-slide-to', String(i));
+    if (i === 0) { btn.className = 'active'; btn.setAttribute('aria-current', 'true'); }
+    btn.setAttribute('aria-label', 'Slide ' + (i + 1));
+    indicators.appendChild(btn);
+  });
+
+  const carouselEl = document.getElementById('reviewCarousel');
+  carouselEl.addEventListener('slid.bs.carousel', (e) => {
+    const idx = e.to;
+    document.querySelectorAll('.slide-card').forEach(c => c.classList.remove('active-slide'));
+    const card = document.getElementById('card-' + SLIDES[idx].id);
+    if (card) {
+      card.classList.add('active-slide');
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+}
+
+function buildGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  SLIDES.forEach(slide => {
+    const v = state[slide.id];
+
+    const card = document.createElement('div');
+    card.className = 'slide-card';
+    card.id = 'card-' + slide.id;
+
+    const label = document.createElement('div');
+    label.className = 'slide-label';
+    label.innerHTML = `<span>${slide.alt}</span>`;
+    card.appendChild(label);
+
+    const preview = document.createElement('div');
+    preview.className = 'preview';
+
+    const img = document.createElement('img');
+    img.src = slide.img;
+    img.alt = slide.alt;
+    img.dataset.slideImg = slide.id;
+    preview.appendChild(img);
+
+    const tile = document.createElement('div');
+    tile.className = 'review-caption';
+    tile.dataset.slideCaption = slide.id;
+    tile.innerHTML = captionMarkup(slide);
+    makeDraggable(tile, preview, slide.id);
+    preview.appendChild(tile);
+
+    card.appendChild(preview);
+
+    const controls = document.createElement('div');
+    controls.className = 'controls';
+    controls.innerHTML = `
+      <div class="control">
+        <label>Crop — horizontal <span data-out="cropX">${v.cropX}%</span></label>
+        <input type="range" min="0" max="100" value="${v.cropX}" data-field="cropX">
+      </div>
+      <div class="control">
+        <label>Crop — vertical <span data-out="cropY">${v.cropY}%</span></label>
+        <input type="range" min="0" max="100" value="${v.cropY}" data-field="cropY">
+      </div>
+      <div class="control">
+        <label>Tile opacity <span data-out="opacity">${v.opacity}%</span></label>
+        <input type="range" min="10" max="100" value="${v.opacity}" data-field="opacity">
+      </div>
+      <div class="control">
+        <label>Tile size <span data-out="scale">${v.scale}%</span></label>
+        <input type="range" min="50" max="150" value="${v.scale}" data-field="scale">
+      </div>
+      <div class="control-actions">
+        <button data-action="reset">Reset this tile</button>
+        <button data-action="copy">Copy this tile's values</button>
+      </div>
+    `;
+
+    controls.querySelectorAll('input[type="range"]').forEach(input => {
+      input.addEventListener('input', () => {
+        const field = input.dataset.field;
+        v[field] = Number(input.value);
+        controls.querySelector(`[data-out="${field}"]`).textContent = input.value + '%';
+        applyStyle(slide.id);
+        saveState();
+      });
+    });
+
+    controls.querySelector('[data-action="reset"]').addEventListener('click', () => resetSlide(slide.id));
+    controls.querySelector('[data-action="copy"]').addEventListener('click', () => {
+      const text = `${slide.id}: crop ${v.cropX}% ${v.cropY}% · position left ${v.left}% top ${v.top}% · opacity ${v.opacity}% · size ${v.scale}%`;
+      navigator.clipboard.writeText(text).catch(() => {});
+      const btn = controls.querySelector('[data-action="copy"]');
+      const original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => btn.textContent = original, 1200);
+    });
+
+    card.appendChild(controls);
+    grid.appendChild(card);
+  });
+}
+
+function makeDraggable(tile, container, id) {
+  let dragging = false;
+
+  tile.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    tile.classList.add('dragging');
+    tile.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  });
+
+  tile.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const rect = container.getBoundingClientRect();
+    let leftPct = ((e.clientX - rect.left) / rect.width) * 100;
+    let topPct = ((e.clientY - rect.top) / rect.height) * 100;
+    leftPct = Math.max(0, Math.min(100, leftPct));
+    topPct = Math.max(0, Math.min(100, topPct));
+    state[id].left = Math.round(leftPct * 10) / 10;
+    state[id].top = Math.round(topPct * 10) / 10;
+    applyStyle(id);
+  });
+
+  function stop() {
+    if (!dragging) return;
+    dragging = false;
+    tile.classList.remove('dragging');
+    saveState();
+  }
+  tile.addEventListener('pointerup', stop);
+  tile.addEventListener('pointercancel', stop);
+}
+
+buildLiveCarousel();
+buildGrid();
+SLIDES.forEach(s => applyStyle(s.id));
+</script>
+
+</body>
+</html>
