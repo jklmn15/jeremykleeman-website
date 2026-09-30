@@ -130,13 +130,16 @@ body {
 /* ====================== TABLET & DESKTOP ===================== */
 /* ============================================================= */
 
-@media only screen and (min-width: 768px) {
-  .phonetext { display: none; }
+@media only screen and (min-width: 992px) {
   .navbar-nav { float: right; }
 
   .navbar-nav .nav-link {
     font-size: clamp(1.6rem, 3vw, 2.4rem);
   }
+}
+
+@media only screen and (min-width: 768px) {
+  .phonetext { display: none; }
 
   .sitetext {
     font-size: 1.25vw;
@@ -455,8 +458,12 @@ body {
 .carousel-img {
   width: 100%;
   height: 80vh;
+  height: 80dvh;
   object-fit: cover;
-  object-position: center 20%;
+  /* Per-slide crop comes from --crop-y on the <img> (see index.html).
+     Declared here rather than inline so the mobile breakpoint below can
+     override it — an inline object-position would always win instead. */
+  object-position: var(--crop-x, 50%) var(--crop-y, 20%);
   display: block;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
@@ -509,8 +516,23 @@ body {
 .carousel-control-prev,
 .carousel-control-next {
   height: 80vh;
+  height: 80dvh;
   top: 0;
   bottom: auto;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 3rem;
+  height: 3rem;
+  background-size: 1.25rem 1.25rem;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* Custom indicators */
@@ -537,23 +559,62 @@ body {
 }
 
 /* Mobile */
+/* Bootstrap's g-5 gutter pulls .row 24px wider than its container's 12px
+   padding on phones, which made the page 402px wide in a 390px viewport and
+   pushed the carousel's right arrow off-screen. Match gutter to padding. */
+@media (max-width: 767px) {
+  .row.g-5 {
+    --bs-gutter-x: 1.5rem;
+  }
+}
+
 @media (max-width: 767px) {
   .carousel-img {
     height: 66vh;
+    height: 66dvh;
     border-radius: 14px;
-    object-position: center 15%;
+    /* --crop-y-mobile when a slide sets one, otherwise fall back to its
+       desktop crop, otherwise the 15% default. */
+    object-position: var(--crop-x-mobile, var(--crop-x, 50%)) var(--crop-y-mobile, var(--crop-y, 15%));
   }
-  .review-caption,
-  .custom-indicators,
+  /* The review text is shown below the carousel by #mobileReview instead */
+  .review-caption {
+    display: none !important;
+  }
+
+  /* Arrows and dots stay on phones so the carousel reads as swipeable */
+  .custom-indicators {
+    margin: 0.9rem 0 0;
+  }
+  .custom-indicators [data-bs-target] {
+    width: 9px;
+    height: 9px;
+    margin: 0 5px;
+    border-top-width: 8px;
+    border-bottom-width: 8px;
+  }
   .carousel-control-prev,
   .carousel-control-next {
-    display: none !important;
+    height: 66vh;
+    width: 20%;
+    opacity: 1;
+  }
+  /* Bootstrap's chevrons are a background-image sized 100% 100%, so the
+     size has to be set explicitly to sit inside a tappable dark disc. */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-size: 1rem 1rem;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
   }
 }
 
 /* Tablet */
 @media (min-width: 768px) and (max-width: 991px) {
-  .carousel-img { height: 70vh; }
+  .carousel-img { height: 70vh; height: 70dvh; }
   .carousel-control-prev,
   .carousel-control-next { height: 70vh; }
   .review-caption {
@@ -637,18 +698,18 @@ body {
   }
 }
 
-/* MOBILE */
-@media (max-width: 767px) {
+/* COLLAPSED NAV (phone + tablet, since the navbar expands at lg) */
+@media (max-width: 991px) {
   .navbar-brand {
     align-items: center;
     justify-content: flex-start;
   }
   .brand-full {
-    font-size: 6vw;
+    font-size: 8.5vw;
   }
+  /* The name alone reads better at phone width */
   .brand-subtitle {
-    font-size: 3.5vw;
-    letter-spacing: 1.5px;
+    display: none;
   }
   .navbar-toggler {
     position: absolute;
@@ -736,8 +797,23 @@ body {
 
 
 
-/* TABLET & DESKTOP: BIGGER, HOVER GLOW */
-@media (min-width: 768px) {
+/* Tablet keeps the collapsed nav but not the phone-sized type */
+@media (min-width: 768px) and (max-width: 991px) {
+  .brand-full {
+    font-size: 3rem;
+  }
+  .brand-subtitle {
+    display: inline;
+    font-size: 1.4rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 2rem;
+  }
+}
+
+
+/* DESKTOP: BIGGER, HOVER GLOW */
+@media (min-width: 992px) {
   .brand-full {
     font-size: 3.2rem;
     transition: text-shadow 0.4s ease;
@@ -1334,4 +1410,28 @@ body {
 .footer-teaching-link:hover {
   color: #7ab8ff;
   text-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+
+/* ============================================================= */
+/* ==================== REDUCED MOTION ========================= */
+/* ============================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item,
+  .carousel-img,
+  .custom-indicators [data-bs-target],
+  .perf-card,
+  .highlight-item {
+    transition: none !important;
+    animation: none !important;
+  }
+  .carousel-item.active .carousel-img {
+    transform: none;
+  }
+  body {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
 }
