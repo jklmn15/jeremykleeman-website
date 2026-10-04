@@ -440,6 +440,7 @@ body {
 /* ============================================================= */
 
 .hero-carousel-container {
+  --tile-h: 6.75rem;              /* half the tile height */
   position: relative;
   margin: 2rem 0 4rem;
   /* contains the active slide's scale(1.02) so it can't widen the page */
@@ -473,24 +474,37 @@ body {
   transform: scale(1.02);
 }
 
-/* Review tile — sits below the photo, centred, same size on every slide */
-.review-caption {
+/* Review tile — straddles the bottom edge of the photo, centred and the same
+   size on every slide. --tile-h is half the tile's height: the negative margin
+   pulls it half over the photo, and hovering slides it down by the same amount
+   so it sits fully clear. .carousel-item reserves that space below. */
+/* Centres the tile and pulls it up so it straddles the bottom of the photo */
+.review-dock {
   width: 92%;
   max-width: 880px;
+  margin: calc(-1 * var(--tile-h)) auto 0;
+  position: relative;
+  z-index: 2;
+}
+
+.review-caption {
+  width: 100%;
   min-height: 13.5rem;
-  margin: 1.75rem auto 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.69);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   color: #000;
   padding: 1.4rem 1.8rem;
   border-radius: 16px;
-  box-shadow: 0 10px 35px rgba(0,0,0,0.3);
-  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.4);
   text-align: center;
   font-family: "PT Serif", serif;
 }
+
 .review-caption h3 {
   font-size: 1.15rem;
   font-weight: 600;
@@ -538,7 +552,7 @@ body {
 /* Custom indicators */
 .custom-indicators {
   position: static;
-  margin: 1.5rem 0 0;
+  margin: 1.25rem 0 0;
 }
 /* [data-bs-target] matches Bootstrap's own selector weight, so the dots
    actually render as 12px circles instead of its default 30x3 dashes. */
@@ -578,7 +592,7 @@ body {
     object-position: var(--crop-x-mobile, var(--crop-x, 50%)) var(--crop-y-mobile, var(--crop-y, 15%));
   }
   /* The review text is shown below the carousel by #mobileReview instead */
-  .review-caption {
+  .review-dock {
     display: none !important;
   }
 
